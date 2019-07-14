@@ -6,7 +6,6 @@
 package com.ptoye.TestKiller;
 
 //import com.ptoye.TestKiller.TestKiller;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -20,20 +19,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -405,14 +397,14 @@ public class OuterPane extends javax.swing.JPanel {
      * Coordinates (X and Y are the same) for start of each square
      */
     int[] coordArray = new int[BIGSQUARES];
-    private Region newRegion;
+//    private Region newRegion;
     private int mouseSqX, mouseSqY;
     private boolean leftMouseDown;
-    private transient Square draggedSquare = null;
-    private transient Square initialDraggedSquare = null;
+//    private transient Square draggedSquare = null;
+//    private transient Square initialDraggedSquare = null;
     private transient boolean firstDrag = false;
-    private transient Set<Region> selectedRegions;
-    private transient Set<Square> selectedSquares;
+//    private transient Set<Region> selectedRegions;
+//    private transient Set<Square> selectedSquares;
 //    private transient CurrentColour currColType;
     private transient Color customColour = INITIAL_CUSTOM_COLOUR;
     private transient Color customColour2;
@@ -421,8 +413,8 @@ public class OuterPane extends javax.swing.JPanel {
     private int regionId = 1;
     private int squareCount, regionTot;
 //    private Square[][] squareArray = new Square[BIGSQUARES][BIGSQUARES];
-    private Set<Region> regions;
-    private ArrayList<Move> moveList;
+//    private Set<Region> regions;
+//    private ArrayList<Move> moveList;
     private int movePointer;
     private long gameTime = 0;    // time in secs
     private transient int squaresLeft;
@@ -442,28 +434,28 @@ public class OuterPane extends javax.swing.JPanel {
       super();
       initialised = false;
 
-      disableButtons();
-      regions = new HashSet<>();
-      moveList = new ArrayList<>(2 * BIGSQUARES * BIGSQUARES);
-      movePointer = -1;
-      totalSize = TOTALSIZE;
+//      disableButtons();
+//      regions = new HashSet<>();
+//      moveList = new ArrayList<>(2 * BIGSQUARES * BIGSQUARES);
+//      movePointer = -1;
+//      totalSize = TOTALSIZE;
       setPreferredSize(new Dimension(totalSize, totalSize));
       setSize(totalSize, totalSize);
-      makeGridLayer(true);
+//      makeGridLayer(true);
       setVisible(true);
       setName("Game-" + gameNo++);
       jd.setVisible(false);
 
-      newRegion = null;
-      selectedRegions = new HashSet<>();
-      selectedSquares = new HashSet<>();
-      playing = false;
-      gameFinished = false;
-      leftMouseDown = false;
-      squareCount = 0;
-      regionTot = 0;
-      mouseSqX = -1;
-      mouseSqY = -1;
+//      newRegion = null;
+//      selectedRegions = new HashSet<>();
+//      selectedSquares = new HashSet<>();
+//      playing = false;
+//      gameFinished = false;
+//      leftMouseDown = false;
+//      squareCount = 0;
+//      regionTot = 0;
+//      mouseSqX = -1;
+//      mouseSqY = -1;
       setFocusable(true);
       SwingUtilities.invokeLater(displayTime);
       gameTimer.scheduleAtFixedRate(timerTick, 1000l, 1000l);
@@ -542,11 +534,11 @@ public class OuterPane extends javax.swing.JPanel {
     };
 
     private void clearMoveList() {
-      moveList.clear();
-      movePointer = -1;
+//      moveList.clear();
+//      movePointer = -1;
     }
 
-    private void clearNewRegion() {
+//    private void clearNewRegion() {
 //      if (newRegion != null) {
 //        for (Square sqr : newRegion.getContents()) {
 //          sqr.setRegion(null);
@@ -555,36 +547,36 @@ public class OuterPane extends javax.swing.JPanel {
 //        newRegion.getContents().clear();
 //        newRegion = null;
 //      }
-    }
+//    }
 
-    private Integer getRegionValue(Region r) throws HeadlessException {
-      Integer intval;
-      int regSquares = r.getContents().size(); // number of squares in region
-      if (inputFromSpinner) {
-        RegionValue rv = new RegionValue(JOptionPane.getFrameForComponent(this),
-                (regSquares * (regSquares + 1) / 2),
-                (regSquares * (2 * BIGSQUARES - regSquares + 1)) / 2);
-        intval = rv.getChosenValue();
-        rv.setVisible(false);
-        return intval;
-      } else {
-        String val = JOptionPane.showInputDialog(getTopLevelAncestor(),
-                "Value for region");
-        try {
-          intval = Integer.parseInt(val);
-        } catch (NumberFormatException ex) {
-          return null;
-        }
-        if (intval >= regSquares * (regSquares + 1) / 2
-                && intval
-                <= (regSquares * (2 * BIGSQUARES - regSquares + 1)) / 2) {
-          return intval;
-        }
-        return null;
-      }
-    }
+//    private Integer getRegionValue(Region r) throws HeadlessException {
+//      Integer intval;
+//      int regSquares = r.getContents().size(); // number of squares in region
+//      if (inputFromSpinner) {
+//        RegionValue rv = new RegionValue(JOptionPane.getFrameForComponent(this),
+//                (regSquares * (regSquares + 1) / 2),
+//                (regSquares * (2 * BIGSQUARES - regSquares + 1)) / 2);
+//        intval = rv.getChosenValue();
+//        rv.setVisible(false);
+//        return intval;
+//      } else {
+//        String val = JOptionPane.showInputDialog(getTopLevelAncestor(),
+//                "Value for region");
+//        try {
+//          intval = Integer.parseInt(val);
+//        } catch (NumberFormatException ex) {
+//          return null;
+//        }
+//        if (intval >= regSquares * (regSquares + 1) / 2
+//                && intval
+//                <= (regSquares * (2 * BIGSQUARES - regSquares + 1)) / 2) {
+//          return intval;
+//        }
+//        return null;
+//      }
+//    }
 
-    private void setPointersNull() {
+//    private void setPointersNull() {
 //      for (int i = 0; i < BIGSQUARES; i++) {
 //        for (int j = 0; j < BIGSQUARES; j++) {
 //          squareArray[i][j].removeMouseListener(this);
@@ -594,19 +586,19 @@ public class OuterPane extends javax.swing.JPanel {
 //      for (Region elem : regions) {
 //        elem.setParent(null);
 //      }
-    }
+//    }
 
-    private void setPointersThis() {
-//      for (int i = 0; i < BIGSQUARES; i++) {
-//        for (int j = 0; j < BIGSQUARES; j++) {
-//          squareArray[i][j].setParent(this);
-//          squareArray[i][j].addMouseListener(this);
-//        }
-//      }
-//      for (Region elem : regions) {
-//        elem.setParent(this);
-//      }
-    }
+//    private void setPointersThis() {
+////      for (int i = 0; i < BIGSQUARES; i++) {
+////        for (int j = 0; j < BIGSQUARES; j++) {
+////          squareArray[i][j].setParent(this);
+////          squareArray[i][j].addMouseListener(this);
+////        }
+////      }
+////      for (Region elem : regions) {
+////        elem.setParent(this);
+////      }
+//    }
 
     /**
      * Restarts a game which is being played. Clears out all squares and history
@@ -755,11 +747,11 @@ public class OuterPane extends javax.swing.JPanel {
      * restored lists and arrays - restores to empty game
      */
     void cleanup() {
-      regions.clear();
-      playing = false;
-      regionId = 1;
-      squareCount = 0;
-      regionTot = 0;
+//      regions.clear();
+//      playing = false;
+//      regionId = 1;
+//      squareCount = 0;
+//      regionTot = 0;
 
 //      for (int x = 0; x < BIGSQUARES; x++) {
 //        for (int y = 0; y < BIGSQUARES; y++) {
@@ -779,48 +771,48 @@ public class OuterPane extends javax.swing.JPanel {
       repaint();
     }
 
-    private void disableButtons() {
+//    private void disableButtons() {
+//
+//      btnStart.setEnabled(false);
+//      rbtPerm.setEnabled(false);
+//      rbtTemp.setEnabled(false);
+//      rbtCustom.setEnabled(false);
+//      rbtCustom2.setEnabled(false);
+//      btnPtoT.setEnabled(false);
+//      btnTtoP.setEnabled(false);
+//      btnSq.setEnabled(false);
+//      btnRow.setEnabled(false);
+//      btnCol.setEnabled(false);
+//      btnSwap.setEnabled(false);
+//      btnSwapPerm.setEnabled(false);
+//      btnCustomCol.setEnabled(false);
+//      btnUndo.setEnabled(false);
+//      btnRedo.setEnabled(false);
+//    }
 
-      btnStart.setEnabled(false);
-      rbtPerm.setEnabled(false);
-      rbtTemp.setEnabled(false);
-      rbtCustom.setEnabled(false);
-      rbtCustom2.setEnabled(false);
-      btnPtoT.setEnabled(false);
-      btnTtoP.setEnabled(false);
-      btnSq.setEnabled(false);
-      btnRow.setEnabled(false);
-      btnCol.setEnabled(false);
-      btnSwap.setEnabled(false);
-      btnSwapPerm.setEnabled(false);
-      btnCustomCol.setEnabled(false);
-      btnUndo.setEnabled(false);
-      btnRedo.setEnabled(false);
-    }
-
-    private void moveToPlaying() {
-      playing = true;
-      btnStart.setEnabled(false);
-      rbtPerm.setEnabled(true);
-      rbtTemp.setEnabled(true);
-      rbtCustom.setEnabled(true);
-      rbtCustom2.setEnabled(true);
-      btnSq.setEnabled(true);
-      btnRow.setEnabled(true);
-      btnCol.setEnabled(true);
-      btnSwap.setEnabled(true);
-      btnSwapPerm.setEnabled(true);
-      btnTtoP.setEnabled(true);
-      btnPtoT.setEnabled(true);
-      btnCustomCol.setEnabled(true);
-      btnUndo.setEnabled(true);
-      btnRedo.setEnabled(true);
-      rbtTemp.setSelected(true);
-//      currColType = CurrentColour.TEMPORARY;
-      currentRealColor = TEMP_COLOUR;
-      clearSelections();
-      squaresLeft = BIGSQUARES * BIGSQUARES;
-    }
+//    private void moveToPlaying() {
+//      playing = true;
+//      btnStart.setEnabled(false);
+//      rbtPerm.setEnabled(true);
+//      rbtTemp.setEnabled(true);
+//      rbtCustom.setEnabled(true);
+//      rbtCustom2.setEnabled(true);
+//      btnSq.setEnabled(true);
+//      btnRow.setEnabled(true);
+//      btnCol.setEnabled(true);
+//      btnSwap.setEnabled(true);
+//      btnSwapPerm.setEnabled(true);
+//      btnTtoP.setEnabled(true);
+//      btnPtoT.setEnabled(true);
+//      btnCustomCol.setEnabled(true);
+//      btnUndo.setEnabled(true);
+//      btnRedo.setEnabled(true);
+//      rbtTemp.setSelected(true);
+////      currColType = CurrentColour.TEMPORARY;
+//      currentRealColor = TEMP_COLOUR;
+//      clearSelections();
+//      squaresLeft = BIGSQUARES * BIGSQUARES;
+//    }
 
     /**
      * Gets the square corresponding to an x,y pair
@@ -829,10 +821,10 @@ public class OuterPane extends javax.swing.JPanel {
      * @param y Y offset (0-8)
      * @return the square
      */
-    Square getSquare(int x, int y) {
-//      return squareArray[x][y];
-return null;
-    }
+//    Square getSquare(int x, int y) {
+////      return squareArray[x][y];
+//return null;
+//    }
 
     /**
      * Gets the coordinate in pixels of the start (top or left) of the square
@@ -854,13 +846,13 @@ return null;
     }
 
     void changeSize() {
-      makeGridLayer(false);
+//      makeGridLayer(false);
 //      for (Region i : regions) {
 //        i.checkNewRegion(i.getTotal());
 //      }
     }
 
-    private void makeGridLayer(boolean newSquares) {
+//    private void makeGridLayer(boolean newSquares) {
 //      int currentXCoord;
 //      int arrayIndex = 0;
 //      Dimension panelDim;
@@ -896,27 +888,27 @@ return null;
 //          }
 //        }
 //      }
-    }
+//    }
 
-    private void addSquareToRegion(Square s) {
-//      Region r = s.getRegion();
-//// square already belongs to another region
-//      if (r != null && r != newRegion) {
-//        return;
-//      }
-//      if (newRegion == null) {
-//        newRegion = new Region(regionId++, this);
-//      }
-//      if (r == null) {
-//        newRegion.addSquare(s);
-//        showSqSelected(s);
-//        s.setRegion(newRegion);
-//      } else if (r == newRegion) {
-//        newRegion.removeSquare(s);
-//        showSqDeselected(s);
-//        s.setRegion(null);
-//      }
-    }
+//    private void addSquareToRegion(Square s) {
+////      Region r = s.getRegion();
+////// square already belongs to another region
+////      if (r != null && r != newRegion) {
+////        return;
+////      }
+////      if (newRegion == null) {
+////        newRegion = new Region(regionId++, this);
+////      }
+////      if (r == null) {
+////        newRegion.addSquare(s);
+////        showSqSelected(s);
+////        s.setRegion(newRegion);
+////      } else if (r == newRegion) {
+////        newRegion.removeSquare(s);
+////        showSqDeselected(s);
+////        s.setRegion(null);
+////      }
+//    }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -928,69 +920,69 @@ return null;
 
     }
 
-    private void addRegion(Region r) {
-//      if (!regions.contains(r)) {
-//        for (Square elem : r.getContents()) {
-//          elem.setRegion(r);
-//        }
-//        regions.add(r);
-//        add(r,  REGIONS_LEVEL);
-//        regionTot += r.getTotal();
-//        r.repaint();
-//      }
-    }
+//    private void addRegion(Region r) {
+////      if (!regions.contains(r)) {
+////        for (Square elem : r.getContents()) {
+////          elem.setRegion(r);
+////        }
+////        regions.add(r);
+////        add(r,  REGIONS_LEVEL);
+////        regionTot += r.getTotal();
+////        r.repaint();
+////      }
+//    }
 
-    private void swapSquares(Square s0, Square s1,
-            boolean toPerm, boolean first) {
-//      Move m;
-//      m = new Move(first, s0);
-//      Move m1 = new Move(false, s1);
-//      int val0 = s0.getIntValue();
-//      int val1 = s1.getIntValue();
-//      if (toPerm) {
-//        if (s0.hasValue() && !s0.isPermanent()) {
-//          squaresLeft--;
-//        }
-//        if (s1.hasValue() && !s1.isPermanent()) {
-//          squaresLeft--;
-//        }
-//        s0.setTextColour(PERM_COLOUR);
-//        s1.setTextColour(PERM_COLOUR);
-//        s0.setConfinedToCol(false);
-//        s1.setConfinedToCol(false);
-//        s0.setConfinedToRow(false);
-//        s1.setConfinedToRow(false);
-//        s0.setConfinedToSq(false);
-//        s1.setConfinedToSq(false);
-//      } else {
-//        Color c0 = s0.getTextColour();
-//        Color c1 = s1.getTextColour();
-//        s0.setTextColour(c1);
-//        s1.setTextColour(c0);
-//        boolean b0 = s0.isConfinedToCol();
-//        boolean b1 = s1.isConfinedToCol();
-//        s0.setConfinedToCol(b1);
-//        s1.setConfinedToCol(b0);
-//        b0 = s0.isConfinedToRow();
-//        b1 = s1.isConfinedToRow();
-//        s0.setConfinedToRow(b1);
-//        s1.setConfinedToRow(b0);
-//        b0 = s0.isConfinedToSq();
-//        b1 = s1.isConfinedToSq();
-//        s0.setConfinedToSq(b1);
-//        s1.setConfinedToSq(b0);
-//      }
-//      s0.setValue(val1);
-//      s1.setValue(val0);
-//      m.updateFromSquare(s0);
-//      m1.updateFromSquare(s1);
-//      s0.repaint();
-//      s1.repaint();
-//      addMove(m);
-//      addMove(m1);
-    }
+//    private void swapSquares(Square s0, Square s1,
+//            boolean toPerm, boolean first) {
+////      Move m;
+////      m = new Move(first, s0);
+////      Move m1 = new Move(false, s1);
+////      int val0 = s0.getIntValue();
+////      int val1 = s1.getIntValue();
+////      if (toPerm) {
+////        if (s0.hasValue() && !s0.isPermanent()) {
+////          squaresLeft--;
+////        }
+////        if (s1.hasValue() && !s1.isPermanent()) {
+////          squaresLeft--;
+////        }
+////        s0.setTextColour(PERM_COLOUR);
+////        s1.setTextColour(PERM_COLOUR);
+////        s0.setConfinedToCol(false);
+////        s1.setConfinedToCol(false);
+////        s0.setConfinedToRow(false);
+////        s1.setConfinedToRow(false);
+////        s0.setConfinedToSq(false);
+////        s1.setConfinedToSq(false);
+////      } else {
+////        Color c0 = s0.getTextColour();
+////        Color c1 = s1.getTextColour();
+////        s0.setTextColour(c1);
+////        s1.setTextColour(c0);
+////        boolean b0 = s0.isConfinedToCol();
+////        boolean b1 = s1.isConfinedToCol();
+////        s0.setConfinedToCol(b1);
+////        s1.setConfinedToCol(b0);
+////        b0 = s0.isConfinedToRow();
+////        b1 = s1.isConfinedToRow();
+////        s0.setConfinedToRow(b1);
+////        s1.setConfinedToRow(b0);
+////        b0 = s0.isConfinedToSq();
+////        b1 = s1.isConfinedToSq();
+////        s0.setConfinedToSq(b1);
+////        s1.setConfinedToSq(b0);
+////      }
+////      s0.setValue(val1);
+////      s1.setValue(val0);
+////      m.updateFromSquare(s0);
+////      m1.updateFromSquare(s1);
+////      s0.repaint();
+////      s1.repaint();
+////      addMove(m);
+////      addMove(m1);
+//    }
 
-    private void undoLastMove() {
+//    private void undoLastMove() {
 //      Move m;
 //
 //      if (movePointer >= 0) {
@@ -1009,9 +1001,9 @@ return null;
 //        tk.EnableSave();
 //      }
 //      gameFinished = checkEnded();
-    }
-
-    private void redoNextMove() {
+//    }
+//
+//    private void redoNextMove() {
 //      Move m;
 //      int ls = moveList.size() - 1;
 //
@@ -1041,61 +1033,61 @@ return null;
 //        tk.EnableSave();
 //      }
 //      gameFinished = checkEnded();
-    }
+//    }
 
-    private void showSqSelected(Square s) {
-      s.setBackColour(SELECTED_BACK_COLOUR);
-    }
+//    private void showSqSelected(Square s) {
+//      s.setBackColour(SELECTED_BACK_COLOUR);
+//    }
 
     /**
      *
      * @param s Square to show deselected
      */
-    void showSqDeselected(Square s) {
-      s.setBackColour(NORMAL_BACK_COLOUR);
-    }
+//    void showSqDeselected(Square s) {
+//      s.setBackColour(NORMAL_BACK_COLOUR);
+//    }
+//
+//    private void showRegSelected(Region r) {
+////      for (Square elem : r.getContents()) {
+////        elem.setBackColour(SELECTED_REGION_COLOUR);
+////      }
+//    }
+//
+//    private void showRegDeselected(Region r) {
+////      for (Square elem : r.getContents()) {
+////        elem.setBackColour(NORMAL_BACK_COLOUR);
+////      }
+//    }
 
-    private void showRegSelected(Region r) {
-//      for (Square elem : r.getContents()) {
-//        elem.setBackColour(SELECTED_REGION_COLOUR);
-//      }
-    }
+//    private void deselectSq(final Square sq) {
+////      selectedSquares.remove(sq);
+////      showSqDeselected(sq);
+//    }
 
-    private void showRegDeselected(Region r) {
-//      for (Square elem : r.getContents()) {
-//        elem.setBackColour(NORMAL_BACK_COLOUR);
-//      }
-    }
+//    private void selectSquare(final Square sq) {
+//      selectedSquares.add(sq);
+//      showSqSelected(sq);
+//    }
+//
+//    private void selectRegion(Region r) {
+////      if (!selectedRegions.contains(r)) {
+////        selectedRegions.add(r);
+////        for (Square elem : r.getContents()) {
+////          selectedSquares.add(elem);
+////        }
+////        showRegSelected(r);
+////      }
+//    }
 
-    private void deselectSq(final Square sq) {
-      selectedSquares.remove(sq);
-      showSqDeselected(sq);
-    }
-
-    private void selectSquare(final Square sq) {
-      selectedSquares.add(sq);
-      showSqSelected(sq);
-    }
-
-    private void selectRegion(Region r) {
-//      if (!selectedRegions.contains(r)) {
-//        selectedRegions.add(r);
-//        for (Square elem : r.getContents()) {
-//          selectedSquares.add(elem);
-//        }
-//        showRegSelected(r);
-//      }
-    }
-
-    private void deselectRegion(Region r) {
-//      if (selectedRegions.contains(r)) {
-//        selectedRegions.remove(r);
-//        for (Square elem : r.getContents()) {
-//          selectedSquares.remove(elem);
-//        }
-//        showRegDeselected(r);
-//      }
-    }
+//    private void deselectRegion(Region r) {
+////      if (selectedRegions.contains(r)) {
+////        selectedRegions.remove(r);
+////        for (Square elem : r.getContents()) {
+////          selectedSquares.remove(elem);
+////        }
+////        showRegDeselected(r);
+////      }
+//    }
 
     /**
      * Clear out all selected sqares and regions Show them as normal and clear
@@ -1118,7 +1110,7 @@ return null;
      *
      * @return true if all OK, false otherwise
      */
-    boolean checkEnded() {
+//    boolean checkEnded() {
 //      boolean checkedOK = true;
 ////      System.out.println("Squares left: "+squaresLeft);
 //      // temp code for debugging
@@ -1262,42 +1254,42 @@ return null;
 //        clearSelections();
 //        return checkedOK;
 //      }
-      return false;
-    }
+//      return false;
+//    }
 
-    private boolean audit() {
-      boolean result = true;
-//      for (int x = 0; x < BIGSQUARES; x++) {
-//        for (int y = 0; y < BIGSQUARES; y++) {
-//          Square sq = squareArray[x][y];
-//          Region r = sq.getRegion();
-//          if (r != null) {
-//            if (!r.getContents().contains(sq)) {
-//              System.out.println("Square " + x + "," + y
-//                      + " says it's in region " + r.getName());
-//              result = false;
-//            }
-//          }
-//          if (sq.getXIndex() != x || sq.getYIndex() != y) {
-//            System.out.println("Square " + x + "," + y
-//                    + " has coords " + sq.getXIndex() + "," + sq.getYIndex());
-//            result = false;
-//          }
-//        }
-//      }
-//      for (Region r : regions) {
-//        for (Square s : r.getContents()) {
-//          if (s.getRegion() != r) {
-//            System.out.println("Region " + r.getName()
-//                    + " contains square " + s.getName());
-//            System.out.println("  Its region is "
-//                    + (r.getName()));
-//            result = false;
-//          }
-//        }
-//      }
-      return result;
-    }
+//    private boolean audit() {
+//      boolean result = true;
+////      for (int x = 0; x < BIGSQUARES; x++) {
+////        for (int y = 0; y < BIGSQUARES; y++) {
+////          Square sq = squareArray[x][y];
+////          Region r = sq.getRegion();
+////          if (r != null) {
+////            if (!r.getContents().contains(sq)) {
+////              System.out.println("Square " + x + "," + y
+////                      + " says it's in region " + r.getName());
+////              result = false;
+////            }
+////          }
+////          if (sq.getXIndex() != x || sq.getYIndex() != y) {
+////            System.out.println("Square " + x + "," + y
+////                    + " has coords " + sq.getXIndex() + "," + sq.getYIndex());
+////            result = false;
+////          }
+////        }
+////      }
+////      for (Region r : regions) {
+////        for (Square s : r.getContents()) {
+////          if (s.getRegion() != r) {
+////            System.out.println("Region " + r.getName()
+////                    + " contains square " + s.getName());
+////            System.out.println("  Its region is "
+////                    + (r.getName()));
+////            result = false;
+////          }
+////        }
+////      }
+//      return result;
+//    }
 
 //    private void print() {
 //      Component[] cList = getComponents();
@@ -1343,52 +1335,52 @@ return null;
 //        System.out.println("  " + elem);
 //      }
 //    }
-    private void printContainer(Container c, String preString) {
-      int i;
-      Component[] cList1 = c.getComponents();
-      for (i = 0; i < Math.min(cList1.length, 10); i++) {
-        Component comp = cList1[i];
-        System.out.println(preString + comp.toString());
-        System.out.println(preString + " Bounds " + comp.getBounds());
-        if (comp instanceof Container) {
-          printContainer((Container) comp, preString + "  ");
-        }
-      }
-      if (i != cList1.length) {
-        System.out.println(preString + "(" + cList1.length
-                + " components in total");
-      }
-    }
+//    private void printContainer(Container c, String preString) {
+//      int i;
+//      Component[] cList1 = c.getComponents();
+//      for (i = 0; i < Math.min(cList1.length, 10); i++) {
+//        Component comp = cList1[i];
+//        System.out.println(preString + comp.toString());
+//        System.out.println(preString + " Bounds " + comp.getBounds());
+//        if (comp instanceof Container) {
+//          printContainer((Container) comp, preString + "  ");
+//        }
+//      }
+//      if (i != cList1.length) {
+//        System.out.println(preString + "(" + cList1.length
+//                + " components in total");
+//      }
+//    }
 
-    private void darken(Square s, boolean force) {
-      if (!s.isDark() || force) {
-        Color c = s.getBackColour();
-        if (c == NORMAL_BACK_COLOUR) {
-          s.setBackColour(DARK_NORMAL_COLOUR);
-        } else if (c == SELECTED_BACK_COLOUR) {
-          s.setBackColour(DARK_SEL_BACK_COLOUR);
-        } else if (c == SELECTED_REGION_COLOUR) {
-          s.setBackColour(DARK_SEL_REGION_COLOUR);
-        }
-        s.setDark(true);
+//    private void darken(Square s, boolean force) {
+//      if (!s.isDark() || force) {
+//        Color c = s.getBackColour();
+//        if (c == NORMAL_BACK_COLOUR) {
+//          s.setBackColour(DARK_NORMAL_COLOUR);
+//        } else if (c == SELECTED_BACK_COLOUR) {
+//          s.setBackColour(DARK_SEL_BACK_COLOUR);
+//        } else if (c == SELECTED_REGION_COLOUR) {
+//          s.setBackColour(DARK_SEL_REGION_COLOUR);
+//        }
+//        s.setDark(true);
+//
+//      }
+//    }
 
-      }
-    }
-
-    private void lighten(Square s) {
-      if (s.isDark()) {
-        Color c = s.getBackColour();
-        if (c == DARK_NORMAL_COLOUR) {
-          s.setBackColour(NORMAL_BACK_COLOUR);
-        } else if (c == DARK_SEL_BACK_COLOUR) {
-          s.setBackColour(SELECTED_BACK_COLOUR);
-        } else if (c == DARK_SEL_REGION_COLOUR) {
-          s.setBackColour(SELECTED_REGION_COLOUR);
-        }
-        s.setDark(false);
-
-      }
-    }
+//    private void lighten(Square s) {
+//      if (s.isDark()) {
+//        Color c = s.getBackColour();
+//        if (c == DARK_NORMAL_COLOUR) {
+//          s.setBackColour(NORMAL_BACK_COLOUR);
+//        } else if (c == DARK_SEL_BACK_COLOUR) {
+//          s.setBackColour(SELECTED_BACK_COLOUR);
+//        } else if (c == DARK_SEL_REGION_COLOUR) {
+//          s.setBackColour(SELECTED_REGION_COLOUR);
+//        }
+//        s.setDark(false);
+//
+//      }
+//    }
 
     // Event listeners
     @Override
@@ -1539,7 +1531,7 @@ return null;
 //      }
     }
 
-    void displayRegionTotal() throws HeadlessException {
+//    void displayRegionTotal() throws HeadlessException {
 //      int total = 0;
 //      for (Region r : selectedRegions) {
 //        total += r.getTotal();
@@ -1563,7 +1555,7 @@ return null;
 //                              + bigCount + remString),
 //              "Total for selected squares",
 //              JOptionPane.INFORMATION_MESSAGE);
-    }
+//    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -1769,14 +1761,14 @@ return null;
 //      }
     }
 
-    private void addMove(final Move m) {
-//      for (int i = moveList.size() - 1; i > movePointer; i--) {
-//        moveList.remove(i);
-//      }
-//      moveList.add(m);
-//      movePointer++;
-//      tk.EnableSave();
-    }
+//    private void addMove(final Move m) {
+////      for (int i = moveList.size() - 1; i > movePointer; i--) {
+////        moveList.remove(i);
+////      }
+////      moveList.add(m);
+////      movePointer++;
+////      tk.EnableSave();
+//    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -1925,18 +1917,18 @@ return null;
 //      gameFinished = checkEnded();
     }
 
-    private void changeCustomColour(final Color newColour) {
-      if (newColour != null) {
-        customColour = newColour;
-        rbtCustom.setForeground(customColour);
-        btnCustomCol.setForeground(customColour);
-        if (rbtCustom.isSelected()) {
-          currentRealColor = customColour;
-        }
-        darkenCustom();
-      }
-      tk.EnableSave();
-    }
+//    private void changeCustomColour(final Color newColour) {
+//      if (newColour != null) {
+//        customColour = newColour;
+//        rbtCustom.setForeground(customColour);
+//        btnCustomCol.setForeground(customColour);
+//        if (rbtCustom.isSelected()) {
+//          currentRealColor = customColour;
+//        }
+//        darkenCustom();
+//      }
+//      tk.EnableSave();
+//    }
 
     private void darkenCustom() {
       customColour2 = customColour.darker();
@@ -1946,7 +1938,7 @@ return null;
       }
     }
 
-    private void swapSelSquares(boolean toPerm) {
+//    private void swapSelSquares(boolean toPerm) {
 //      Move m;
 //      Square s;
 //      Square s0 = null;
@@ -1973,7 +1965,7 @@ return null;
 //      if (s0 != null && s1 != null) {
 //        swapSquares(s0, s1, toPerm, true);
 //      }
-    }
+//    }
 
     void addListeners() {
       btnStart.addActionListener(this);

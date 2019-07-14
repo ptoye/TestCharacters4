@@ -131,19 +131,19 @@ public class TestKiller extends javax.swing.JFrame
     JOptionPane.showMessageDialog(null, s, "Error", JOptionPane.ERROR_MESSAGE);
   }
 
-  private void iconifyPartitionsWindow() {
+//  private void iconifyPartitionsWindow() {
 //    partitionWindow.setExtendedState(ICONIFIED);
 //    btnPartitions.setIcon(showPartsIcon);
 //    jmiViewPart.setSelected(false);
 //    pwIconified = true;
-  }
+//  }
 
-  private void showPartitionsWindow() {
+//  private void showPartitionsWindow() {
 //    partitionWindow.setExtendedState(NORMAL);
 //    btnPartitions.setIcon(hidePartsIcon);
 //    jmiViewPart.setSelected(true);
 //    pwIconified = false;
-  }
+//  }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -361,7 +361,7 @@ public class TestKiller extends javax.swing.JFrame
   }// </editor-fold>//GEN-END:initComponents
 
   private void jmiRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRestartActionPerformed
-    op.getGp().restartGame();
+//    op.getGp().restartGame();
   }//GEN-LAST:event_jmiRestartActionPerformed
 
   private void formWindowIconified(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowIconified
@@ -376,21 +376,21 @@ public class TestKiller extends javax.swing.JFrame
   }//GEN-LAST:event_formWindowDeiconified
 
   private void jmiNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewActionPerformed
-    gameSaveFile = null;
-    filename = null;
-    setTitle(titleString);
-    if (op != null) {
-      getContentPane().remove(op);
-    }
-    op = new OuterPane(this);
-    getContentPane().add(op);
-    repaint();
+//    gameSaveFile = null;
+//    filename = null;
+//    setTitle(titleString);
+//    if (op != null) {
+//      getContentPane().remove(op);
+//    }
+//    op = new OuterPane(this);
+//    getContentPane().add(op);
+//    repaint();
   }//GEN-LAST:event_jmiNewActionPerformed
 
   private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
-    if (op != null) {
-      op.stopTimer();
-    }
+//    if (op != null) {
+//      op.stopTimer();
+//    }
   }//GEN-LAST:event_formWindowDeactivated
 
   private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -405,28 +405,28 @@ public class TestKiller extends javax.swing.JFrame
   }//GEN-LAST:event_formWindowActivated
 
   private void jmiSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSaveActionPerformed
-    if (filename == null) {
-      jmiSaveAsActionPerformed(evt);
-    } else {
-      saveGameToFile(gameSaveFile);
-    }
+//    if (filename == null) {
+//      jmiSaveAsActionPerformed(evt);
+//    } else {
+//      saveGameToFile(gameSaveFile);
+//    }
   }//GEN-LAST:event_jmiSaveActionPerformed
 
   private void jmiPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPrintActionPerformed
-    PrinterJob pj = PrinterJob.getPrinterJob();
-    boolean printit;
-
-//    pj.setPrintable(this);
-    printit = pj.printDialog();
-    System.out.println("Resolution=");
-    if (printit) {
-      try {
-        pj.print();
-      } catch (PrinterException ex) {
-        Logger.getLogger(TestKiller.class.getName()).log(Level.SEVERE, null, ex);
-      }
-    }
-    printAll(getGraphics());
+//    PrinterJob pj = PrinterJob.getPrinterJob();
+//    boolean printit;
+//
+////    pj.setPrintable(this);
+//    printit = pj.printDialog();
+//    System.out.println("Resolution=");
+//    if (printit) {
+//      try {
+//        pj.print();
+//      } catch (PrinterException ex) {
+//        Logger.getLogger(TestKiller.class.getName()).log(Level.SEVERE, null, ex);
+//      }
+//    }
+//    printAll(getGraphics());
   }//GEN-LAST:event_jmiPrintActionPerformed
 
 //  @Override
