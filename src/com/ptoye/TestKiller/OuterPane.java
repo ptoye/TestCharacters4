@@ -359,7 +359,11 @@ public class OuterPane extends javax.swing.JPanel {
    * Inner class to OuterPane. It contains the game itself
    */
   class GamePanel extends JLayeredPane
-          implements MouseListener, KeyListener, ActionListener {
+          implements
+          MouseListener,
+          KeyListener,
+          ActionListener
+  {
 
     /**
      * Serialisation ID
@@ -416,7 +420,7 @@ public class OuterPane extends javax.swing.JPanel {
     private boolean playing;
     private int regionId = 1;
     private int squareCount, regionTot;
-    private Square[][] squareArray = new Square[BIGSQUARES][BIGSQUARES];
+//    private Square[][] squareArray = new Square[BIGSQUARES][BIGSQUARES];
     private Set<Region> regions;
     private ArrayList<Move> moveList;
     private int movePointer;
@@ -480,33 +484,34 @@ public class OuterPane extends javax.swing.JPanel {
      * @param os Output stream to save to
      */
     void saveGame(ObjectOutputStream os) {
-      try {
-        os.writeInt(SAVE_TYPE);
-        os.writeInt(SQUARES);
-        os.writeBoolean(playing);
-        os.writeInt(regionId);
-        os.writeInt(squareCount);
-        os.writeInt(regionTot);
-        os.writeLong(gameTime);
-        setPointersNull();
-        os.writeObject(squareArray);
-        os.writeObject(regions);
-        os.writeObject(moveList);
-        os.writeInt(movePointer);
-        os.writeObject(customColour);
-        setPointersThis();
-        tk.DisableSave();
-      } catch (IOException ex) {
-        TestKiller.showMessage("I/O error while saving game\n"
-                + ex.getLocalizedMessage());
-        try {
-          os.close();
-        } catch (IOException ex1) {
-        } finally {
-          System.exit(1);
-        }
-      }
+//      try {
+//        os.writeInt(SAVE_TYPE);
+//        os.writeInt(SQUARES);
+//        os.writeBoolean(playing);
+//        os.writeInt(regionId);
+//        os.writeInt(squareCount);
+//        os.writeInt(regionTot);
+//        os.writeLong(gameTime);
+//        setPointersNull();
+//        os.writeObject(squareArray);
+//        os.writeObject(regions);
+//        os.writeObject(moveList);
+//        os.writeInt(movePointer);
+//        os.writeObject(customColour);
+//        setPointersThis();
+//        tk.DisableSave();
+//      } catch (IOException ex) {
+//        TestKiller.showMessage("I/O error while saving game\n"
+//                + ex.getLocalizedMessage());
+//        try {
+//          os.close();
+//        } catch (IOException ex1) {
+//        } finally {
+//          System.exit(1);
+//        }
+//      }
     }
+
     /**
      * Keeps track of the running time for the game
      */
@@ -542,14 +547,14 @@ public class OuterPane extends javax.swing.JPanel {
     }
 
     private void clearNewRegion() {
-      if (newRegion != null) {
-        for (Square sqr : newRegion.getContents()) {
-          sqr.setRegion(null);
-          showSqDeselected(sqr);
-        }
-        newRegion.getContents().clear();
-        newRegion = null;
-      }
+//      if (newRegion != null) {
+//        for (Square sqr : newRegion.getContents()) {
+//          sqr.setRegion(null);
+//          showSqDeselected(sqr);
+//        }
+//        newRegion.getContents().clear();
+//        newRegion = null;
+//      }
     }
 
     private Integer getRegionValue(Region r) throws HeadlessException {
@@ -580,51 +585,51 @@ public class OuterPane extends javax.swing.JPanel {
     }
 
     private void setPointersNull() {
-      for (int i = 0; i < BIGSQUARES; i++) {
-        for (int j = 0; j < BIGSQUARES; j++) {
-          squareArray[i][j].removeMouseListener(this);
-          squareArray[i][j].setParent(null);
-        }
-      }
-      for (Region elem : regions) {
-        elem.setParent(null);
-      }
+//      for (int i = 0; i < BIGSQUARES; i++) {
+//        for (int j = 0; j < BIGSQUARES; j++) {
+//          squareArray[i][j].removeMouseListener(this);
+//          squareArray[i][j].setParent(null);
+//        }
+//      }
+//      for (Region elem : regions) {
+//        elem.setParent(null);
+//      }
     }
 
     private void setPointersThis() {
-      for (int i = 0; i < BIGSQUARES; i++) {
-        for (int j = 0; j < BIGSQUARES; j++) {
-          squareArray[i][j].setParent(this);
-          squareArray[i][j].addMouseListener(this);
-        }
-      }
-      for (Region elem : regions) {
-        elem.setParent(this);
-      }
+//      for (int i = 0; i < BIGSQUARES; i++) {
+//        for (int j = 0; j < BIGSQUARES; j++) {
+//          squareArray[i][j].setParent(this);
+//          squareArray[i][j].addMouseListener(this);
+//        }
+//      }
+//      for (Region elem : regions) {
+//        elem.setParent(this);
+//      }
     }
 
     /**
      * Restarts a game which is being played. Clears out all squares and history
      */
     void restartGame() {
-      Square s;
-      if (playing) {
-        clearSelections();
-        clearMoveList();
-        tk.EnableSave();
-        for (int i = 0; i < BIGSQUARES; i++) {
-          for (int j = 0; j < BIGSQUARES; j++) {
-            s = squareArray[i][j];
-            s.setValue(0);
-            s.setConfinedToCol(false);
-            s.setConfinedToRow(false);
-            s.setConfinedToSq(false);
-            squaresLeft = BIGSQUARES * BIGSQUARES;
-            changeCustomColour(INITIAL_CUSTOM_COLOUR);
-          }
-        }
-      }
-      repaint();
+//      Square s;
+//      if (playing) {
+//        clearSelections();
+//        clearMoveList();
+//        tk.EnableSave();
+//        for (int i = 0; i < BIGSQUARES; i++) {
+//          for (int j = 0; j < BIGSQUARES; j++) {
+//            s = squareArray[i][j];
+//            s.setValue(0);
+//            s.setConfinedToCol(false);
+//            s.setConfinedToRow(false);
+//            s.setConfinedToSq(false);
+//            squaresLeft = BIGSQUARES * BIGSQUARES;
+//            changeCustomColour(INITIAL_CUSTOM_COLOUR);
+//          }
+//        }
+//      }
+//      repaint();
     }
 
     /**
@@ -634,114 +639,114 @@ public class OuterPane extends javax.swing.JPanel {
      * @return true if succeeded, false otherwise
      */
     boolean restoreGame(ObjectInputStream is) {
-      Object obj;
-//      print();
-      initialised = false;
-      mouseSqX = -1;
-      mouseSqY = -1;
-      leftMouseDown = false;
-      newRegion = null;
-      customColour = INITIAL_CUSTOM_COLOUR;
-      darkenCustom();
-      //first clear out any selections and the region list
-      clearSelections();
-      for (Region elem : regions) {
-        remove(elem);
-      }
-      for (int x = 0; x < BIGSQUARES; x++) {
-        for (int y = 0; y < BIGSQUARES; y++) {
-          remove(squareArray[x][y]);
-        }
-      }
-      regions.clear();
-      try {
-        int k = is.readInt();
-        if (k != SAVE_TYPE) {
-          TestKiller.showMessage("Saved type is " + k
-                  + ", should be " + SAVE_TYPE);
-          return false;
-        }
-        k = is.readInt();
-        if (k != SQUARES) {
-          TestKiller.showMessage("Saved size is " + k
-                  + ", should be " + SQUARES);
-          return false;
-        }
-        playing = is.readBoolean();
-        regionId = is.readInt();
-        squareCount = is.readInt();
-        regionTot = is.readInt();
-        gameTime = is.readLong();
-
-        squareArray = (Square[][]) (is.readObject());
-//        obj=is.readObject();
-        regions = (HashSet<Region>) (is.readObject());
-        moveList = (ArrayList<Move>) (is.readObject());
-        movePointer = is.readInt();
-
-        customColour = (Color) is.readObject();
-        rbtCustom.setForeground(customColour);
-        btnCustomCol.setForeground(customColour);
-        darkenCustom();
-      } catch (IOException ex) {
-        TestKiller.showMessage("I/O error while restoring game\n"
-                + ex.getLocalizedMessage());
-        return false;
-      } catch (ClassNotFoundException ex) {
-        TestKiller.showMessage("Class error while restoring game\n"
-                + ex.getLocalizedMessage());
-        return false;
-      }
-      if (squareArray[0][0] == null) {
-        System.out.println("SquareArray not initialised properly");
-        return false;
-      }
-      if (regions == null) {
-        System.out.println("Regions not initialised properly");
-        return false;
-      }
-      if (moveList == null) {
-        System.out.println("MoveList not initialised properly");
-        return false;
-      }
-      for (int x = 0; x < BIGSQUARES; x++) {
-        for (int y = 0; y < BIGSQUARES; y++) {
-          add(squareArray[x][y], GRID_LEVEL);
-          squareArray[x][y].setBackColour(NORMAL_BACK_COLOUR);
-        }
-      }
-      setPointersThis();
-
-      for (Region elem : regions) {
-//        add(elem, new Integer(REGIONS_LEVEL));
-        add(elem, REGIONS_LEVEL);
-
-        elem.checkNewRegion(elem.getTotal());
-      }
-      disableButtons();
-      if (!playing) {
-        btnStart.setEnabled(squareCount == BIGSQUARES * BIGSQUARES
-                && regionTot == MAX_TOTAL * BIGSQUARES);
-      } else {
-        moveToPlaying();
-        for (int x = 0; x < BIGSQUARES; x++) {
-          for (int y = 0; y < BIGSQUARES; y++) {
-            if (squareArray[x][y].isPermanent()) {
-              squaresLeft--;
-            }
-          }
-        }
-      }
-// in case not updating times
-      javax.swing.SwingUtilities.invokeLater(displayTime);
-      changeSize();
-      repaint();
-      gameFinished = checkEnded();
-      tk.DisableSave();
-//      System.out.println("Repainted");
-      System.out.println("Result of audit: " + audit());
-//      print();
-      initialised = true;
+//      Object obj;
+////      print();
+//      initialised = false;
+//      mouseSqX = -1;
+//      mouseSqY = -1;
+//      leftMouseDown = false;
+//      newRegion = null;
+//      customColour = INITIAL_CUSTOM_COLOUR;
+//      darkenCustom();
+//      //first clear out any selections and the region list
+//      clearSelections();
+//      for (Region elem : regions) {
+//        remove(elem);
+//      }
+//      for (int x = 0; x < BIGSQUARES; x++) {
+//        for (int y = 0; y < BIGSQUARES; y++) {
+//          remove(squareArray[x][y]);
+//        }
+//      }
+//      regions.clear();
+//      try {
+//        int k = is.readInt();
+//        if (k != SAVE_TYPE) {
+//          TestKiller.showMessage("Saved type is " + k
+//                  + ", should be " + SAVE_TYPE);
+//          return false;
+//        }
+//        k = is.readInt();
+//        if (k != SQUARES) {
+//          TestKiller.showMessage("Saved size is " + k
+//                  + ", should be " + SQUARES);
+//          return false;
+//        }
+//        playing = is.readBoolean();
+//        regionId = is.readInt();
+//        squareCount = is.readInt();
+//        regionTot = is.readInt();
+//        gameTime = is.readLong();
+//
+//        squareArray = (Square[][]) (is.readObject());
+////        obj=is.readObject();
+//        regions = (HashSet<Region>) (is.readObject());
+//        moveList = (ArrayList<Move>) (is.readObject());
+//        movePointer = is.readInt();
+//
+//        customColour = (Color) is.readObject();
+//        rbtCustom.setForeground(customColour);
+//        btnCustomCol.setForeground(customColour);
+//        darkenCustom();
+//      } catch (IOException ex) {
+//        TestKiller.showMessage("I/O error while restoring game\n"
+//                + ex.getLocalizedMessage());
+//        return false;
+//      } catch (ClassNotFoundException ex) {
+//        TestKiller.showMessage("Class error while restoring game\n"
+//                + ex.getLocalizedMessage());
+//        return false;
+//      }
+//      if (squareArray[0][0] == null) {
+//        System.out.println("SquareArray not initialised properly");
+//        return false;
+//      }
+//      if (regions == null) {
+//        System.out.println("Regions not initialised properly");
+//        return false;
+//      }
+//      if (moveList == null) {
+//        System.out.println("MoveList not initialised properly");
+//        return false;
+//      }
+//      for (int x = 0; x < BIGSQUARES; x++) {
+//        for (int y = 0; y < BIGSQUARES; y++) {
+//          add(squareArray[x][y], GRID_LEVEL);
+//          squareArray[x][y].setBackColour(NORMAL_BACK_COLOUR);
+//        }
+//      }
+//      setPointersThis();
+//
+//      for (Region elem : regions) {
+////        add(elem, new Integer(REGIONS_LEVEL));
+//        add(elem, REGIONS_LEVEL);
+//
+//        elem.checkNewRegion(elem.getTotal());
+//      }
+//      disableButtons();
+//      if (!playing) {
+//        btnStart.setEnabled(squareCount == BIGSQUARES * BIGSQUARES
+//                && regionTot == MAX_TOTAL * BIGSQUARES);
+//      } else {
+//        moveToPlaying();
+//        for (int x = 0; x < BIGSQUARES; x++) {
+//          for (int y = 0; y < BIGSQUARES; y++) {
+//            if (squareArray[x][y].isPermanent()) {
+//              squaresLeft--;
+//            }
+//          }
+//        }
+//      }
+//// in case not updating times
+//      javax.swing.SwingUtilities.invokeLater(displayTime);
+//      changeSize();
+//      repaint();
+//      gameFinished = checkEnded();
+//      tk.DisableSave();
+////      System.out.println("Repainted");
+//      System.out.println("Result of audit: " + audit());
+////      print();
+//      initialised = true;
       return true;
     }
 
@@ -756,18 +761,18 @@ public class OuterPane extends javax.swing.JPanel {
       squareCount = 0;
       regionTot = 0;
 
-      for (int x = 0; x < BIGSQUARES; x++) {
-        for (int y = 0; y < BIGSQUARES; y++) {
-          Square sq = squareArray[x][y];
-          sq.setValue(0);
-          sq.setConfinedToCol(false);
-          sq.setConfinedToRow(false);
-          sq.setConfinedToSq(false);
-          sq.setDark(false);
-          sq.setRegion(null);
-          sq.setBackColour(NORMAL_BACK_COLOUR);
-        }
-      }
+//      for (int x = 0; x < BIGSQUARES; x++) {
+//        for (int y = 0; y < BIGSQUARES; y++) {
+//          Square sq = squareArray[x][y];
+//          sq.setValue(0);
+//          sq.setConfinedToCol(false);
+//          sq.setConfinedToRow(false);
+//          sq.setConfinedToSq(false);
+//          sq.setDark(false);
+//          sq.setRegion(null);
+//          sq.setBackColour(NORMAL_BACK_COLOUR);
+//        }
+//      }
       clearMoveList();
       customColour = INITIAL_CUSTOM_COLOUR;
       darkenCustom();
@@ -825,7 +830,8 @@ public class OuterPane extends javax.swing.JPanel {
      * @return the square
      */
     Square getSquare(int x, int y) {
-      return squareArray[x][y];
+//      return squareArray[x][y];
+return null;
     }
 
     /**
@@ -849,67 +855,67 @@ public class OuterPane extends javax.swing.JPanel {
 
     void changeSize() {
       makeGridLayer(false);
-      for (Region i : regions) {
-        i.checkNewRegion(i.getTotal());
-      }
+//      for (Region i : regions) {
+//        i.checkNewRegion(i.getTotal());
+//      }
     }
 
     private void makeGridLayer(boolean newSquares) {
-      int currentXCoord;
-      int arrayIndex = 0;
-      Dimension panelDim;
-      int panelSize;
-      Square sq;
-
-      panelDim = this.getSize();
-      panelSize = Math.min(panelDim.height, panelDim.width);
-      // note integer division to round down
-      squareSize = (panelSize - FIXED_WIDTH) / BIGSQUARES;
-      totalSize = FIXED_WIDTH + BIGSQUARES * squareSize;
-
-      currentXCoord = START_X + THICK_WIDTH;
-      for (int BigX = 0; BigX < SQUARES; BigX++) {
-        for (int LittleX = 0; LittleX < SQUARES; LittleX++) {
-          coordArray[arrayIndex++] = currentXCoord;
-          currentXCoord += THIN_WIDTH + squareSize;
-        }
-        currentXCoord += THICK_WIDTH - THIN_WIDTH;
-      }
-
-      for (int xIndex = 0; xIndex < BIGSQUARES; xIndex++) {
-        for (int yIndex = 0; yIndex < BIGSQUARES; yIndex++) {
-          if (newSquares) {
-            sq = new Square(xIndex, yIndex,
-                    Color.RED, NORMAL_BACK_COLOUR, this, squareSize);
-            sq.addMouseListener(this);
-            squareArray[xIndex][yIndex] = sq;
-//            add(sq, new Integer(GRID_LEVEL));
-            add(sq,  GRID_LEVEL);
-          } else {
-            squareArray[xIndex][yIndex].updateSize(xIndex, yIndex, squareSize);
-          }
-        }
-      }
+//      int currentXCoord;
+//      int arrayIndex = 0;
+//      Dimension panelDim;
+//      int panelSize;
+//      Square sq;
+//
+//      panelDim = this.getSize();
+//      panelSize = Math.min(panelDim.height, panelDim.width);
+//      // note integer division to round down
+//      squareSize = (panelSize - FIXED_WIDTH) / BIGSQUARES;
+//      totalSize = FIXED_WIDTH + BIGSQUARES * squareSize;
+//
+//      currentXCoord = START_X + THICK_WIDTH;
+//      for (int BigX = 0; BigX < SQUARES; BigX++) {
+//        for (int LittleX = 0; LittleX < SQUARES; LittleX++) {
+//          coordArray[arrayIndex++] = currentXCoord;
+//          currentXCoord += THIN_WIDTH + squareSize;
+//        }
+//        currentXCoord += THICK_WIDTH - THIN_WIDTH;
+//      }
+//
+//      for (int xIndex = 0; xIndex < BIGSQUARES; xIndex++) {
+//        for (int yIndex = 0; yIndex < BIGSQUARES; yIndex++) {
+//          if (newSquares) {
+//            sq = new Square(xIndex, yIndex,
+//                    Color.RED, NORMAL_BACK_COLOUR, this, squareSize);
+//            sq.addMouseListener(this);
+//            squareArray[xIndex][yIndex] = sq;
+////            add(sq, new Integer(GRID_LEVEL));
+//            add(sq,  GRID_LEVEL);
+//          } else {
+//            squareArray[xIndex][yIndex].updateSize(xIndex, yIndex, squareSize);
+//          }
+//        }
+//      }
     }
 
     private void addSquareToRegion(Square s) {
-      Region r = s.getRegion();
-// square already belongs to another region
-      if (r != null && r != newRegion) {
-        return;
-      }
-      if (newRegion == null) {
-        newRegion = new Region(regionId++, this);
-      }
-      if (r == null) {
-        newRegion.addSquare(s);
-        showSqSelected(s);
-        s.setRegion(newRegion);
-      } else if (r == newRegion) {
-        newRegion.removeSquare(s);
-        showSqDeselected(s);
-        s.setRegion(null);
-      }
+//      Region r = s.getRegion();
+//// square already belongs to another region
+//      if (r != null && r != newRegion) {
+//        return;
+//      }
+//      if (newRegion == null) {
+//        newRegion = new Region(regionId++, this);
+//      }
+//      if (r == null) {
+//        newRegion.addSquare(s);
+//        showSqSelected(s);
+//        s.setRegion(newRegion);
+//      } else if (r == newRegion) {
+//        newRegion.removeSquare(s);
+//        showSqDeselected(s);
+//        s.setRegion(null);
+//      }
     }
 
     @Override
@@ -923,118 +929,118 @@ public class OuterPane extends javax.swing.JPanel {
     }
 
     private void addRegion(Region r) {
-      if (!regions.contains(r)) {
-        for (Square elem : r.getContents()) {
-          elem.setRegion(r);
-        }
-        regions.add(r);
-        add(r,  REGIONS_LEVEL);
-        regionTot += r.getTotal();
-        r.repaint();
-      }
+//      if (!regions.contains(r)) {
+//        for (Square elem : r.getContents()) {
+//          elem.setRegion(r);
+//        }
+//        regions.add(r);
+//        add(r,  REGIONS_LEVEL);
+//        regionTot += r.getTotal();
+//        r.repaint();
+//      }
     }
 
     private void swapSquares(Square s0, Square s1,
             boolean toPerm, boolean first) {
-      Move m;
-      m = new Move(first, s0);
-      Move m1 = new Move(false, s1);
-      int val0 = s0.getIntValue();
-      int val1 = s1.getIntValue();
-      if (toPerm) {
-        if (s0.hasValue() && !s0.isPermanent()) {
-          squaresLeft--;
-        }
-        if (s1.hasValue() && !s1.isPermanent()) {
-          squaresLeft--;
-        }
-        s0.setTextColour(PERM_COLOUR);
-        s1.setTextColour(PERM_COLOUR);
-        s0.setConfinedToCol(false);
-        s1.setConfinedToCol(false);
-        s0.setConfinedToRow(false);
-        s1.setConfinedToRow(false);
-        s0.setConfinedToSq(false);
-        s1.setConfinedToSq(false);
-      } else {
-        Color c0 = s0.getTextColour();
-        Color c1 = s1.getTextColour();
-        s0.setTextColour(c1);
-        s1.setTextColour(c0);
-        boolean b0 = s0.isConfinedToCol();
-        boolean b1 = s1.isConfinedToCol();
-        s0.setConfinedToCol(b1);
-        s1.setConfinedToCol(b0);
-        b0 = s0.isConfinedToRow();
-        b1 = s1.isConfinedToRow();
-        s0.setConfinedToRow(b1);
-        s1.setConfinedToRow(b0);
-        b0 = s0.isConfinedToSq();
-        b1 = s1.isConfinedToSq();
-        s0.setConfinedToSq(b1);
-        s1.setConfinedToSq(b0);
-      }
-      s0.setValue(val1);
-      s1.setValue(val0);
-      m.updateFromSquare(s0);
-      m1.updateFromSquare(s1);
-      s0.repaint();
-      s1.repaint();
-      addMove(m);
-      addMove(m1);
+//      Move m;
+//      m = new Move(first, s0);
+//      Move m1 = new Move(false, s1);
+//      int val0 = s0.getIntValue();
+//      int val1 = s1.getIntValue();
+//      if (toPerm) {
+//        if (s0.hasValue() && !s0.isPermanent()) {
+//          squaresLeft--;
+//        }
+//        if (s1.hasValue() && !s1.isPermanent()) {
+//          squaresLeft--;
+//        }
+//        s0.setTextColour(PERM_COLOUR);
+//        s1.setTextColour(PERM_COLOUR);
+//        s0.setConfinedToCol(false);
+//        s1.setConfinedToCol(false);
+//        s0.setConfinedToRow(false);
+//        s1.setConfinedToRow(false);
+//        s0.setConfinedToSq(false);
+//        s1.setConfinedToSq(false);
+//      } else {
+//        Color c0 = s0.getTextColour();
+//        Color c1 = s1.getTextColour();
+//        s0.setTextColour(c1);
+//        s1.setTextColour(c0);
+//        boolean b0 = s0.isConfinedToCol();
+//        boolean b1 = s1.isConfinedToCol();
+//        s0.setConfinedToCol(b1);
+//        s1.setConfinedToCol(b0);
+//        b0 = s0.isConfinedToRow();
+//        b1 = s1.isConfinedToRow();
+//        s0.setConfinedToRow(b1);
+//        s1.setConfinedToRow(b0);
+//        b0 = s0.isConfinedToSq();
+//        b1 = s1.isConfinedToSq();
+//        s0.setConfinedToSq(b1);
+//        s1.setConfinedToSq(b0);
+//      }
+//      s0.setValue(val1);
+//      s1.setValue(val0);
+//      m.updateFromSquare(s0);
+//      m1.updateFromSquare(s1);
+//      s0.repaint();
+//      s1.repaint();
+//      addMove(m);
+//      addMove(m1);
     }
 
     private void undoLastMove() {
-      Move m;
-
-      if (movePointer >= 0) {
-        do {
-          m = moveList.get(movePointer--);
-          Square s = squareArray[m.getSqX()][m.getSqY()];
-          boolean oldPerm = s.isPermanent();
-          s.updateFromMoveOld(m);
-          boolean newPerm = s.isPermanent();
-          if (oldPerm && !newPerm) {
-            squaresLeft++;
-          } else if (newPerm && !oldPerm) {
-            squaresLeft--;
-          }
-        } while (!m.isStart() && movePointer >= 0);
-        tk.EnableSave();
-      }
-      gameFinished = checkEnded();
+//      Move m;
+//
+//      if (movePointer >= 0) {
+//        do {
+//          m = moveList.get(movePointer--);
+//          Square s = squareArray[m.getSqX()][m.getSqY()];
+//          boolean oldPerm = s.isPermanent();
+//          s.updateFromMoveOld(m);
+//          boolean newPerm = s.isPermanent();
+//          if (oldPerm && !newPerm) {
+//            squaresLeft++;
+//          } else if (newPerm && !oldPerm) {
+//            squaresLeft--;
+//          }
+//        } while (!m.isStart() && movePointer >= 0);
+//        tk.EnableSave();
+//      }
+//      gameFinished = checkEnded();
     }
 
     private void redoNextMove() {
-      Move m;
-      int ls = moveList.size() - 1;
-
-      if (movePointer < ls) {
-        m = moveList.get(++movePointer);
-        while (true) {
-          Square s = squareArray[m.getSqX()][m.getSqY()];
-          boolean oldPerm = s.isPermanent();
-          s.updateFromMoveNew(m);
-          boolean newPerm = s.isPermanent();
-          if (oldPerm && !newPerm) {
-            squaresLeft++;
-          } else if (newPerm && !oldPerm) {
-            squaresLeft--;
-          }
-          if (movePointer < ls) {
-            m = moveList.get(++movePointer);
-            if (m.isStart()) {
-              movePointer--;
-              break;
-            }
-
-          } else {
-            break;
-          }
-        }
-        tk.EnableSave();
-      }
-      gameFinished = checkEnded();
+//      Move m;
+//      int ls = moveList.size() - 1;
+//
+//      if (movePointer < ls) {
+//        m = moveList.get(++movePointer);
+//        while (true) {
+//          Square s = squareArray[m.getSqX()][m.getSqY()];
+//          boolean oldPerm = s.isPermanent();
+//          s.updateFromMoveNew(m);
+//          boolean newPerm = s.isPermanent();
+//          if (oldPerm && !newPerm) {
+//            squaresLeft++;
+//          } else if (newPerm && !oldPerm) {
+//            squaresLeft--;
+//          }
+//          if (movePointer < ls) {
+//            m = moveList.get(++movePointer);
+//            if (m.isStart()) {
+//              movePointer--;
+//              break;
+//            }
+//
+//          } else {
+//            break;
+//          }
+//        }
+//        tk.EnableSave();
+//      }
+//      gameFinished = checkEnded();
     }
 
     private void showSqSelected(Square s) {
@@ -1050,15 +1056,15 @@ public class OuterPane extends javax.swing.JPanel {
     }
 
     private void showRegSelected(Region r) {
-      for (Square elem : r.getContents()) {
-        elem.setBackColour(SELECTED_REGION_COLOUR);
-      }
+//      for (Square elem : r.getContents()) {
+//        elem.setBackColour(SELECTED_REGION_COLOUR);
+//      }
     }
 
     private void showRegDeselected(Region r) {
-      for (Square elem : r.getContents()) {
-        elem.setBackColour(NORMAL_BACK_COLOUR);
-      }
+//      for (Square elem : r.getContents()) {
+//        elem.setBackColour(NORMAL_BACK_COLOUR);
+//      }
     }
 
     private void deselectSq(final Square sq) {
@@ -1072,23 +1078,23 @@ public class OuterPane extends javax.swing.JPanel {
     }
 
     private void selectRegion(Region r) {
-      if (!selectedRegions.contains(r)) {
-        selectedRegions.add(r);
-        for (Square elem : r.getContents()) {
-          selectedSquares.add(elem);
-        }
-        showRegSelected(r);
-      }
+//      if (!selectedRegions.contains(r)) {
+//        selectedRegions.add(r);
+//        for (Square elem : r.getContents()) {
+//          selectedSquares.add(elem);
+//        }
+//        showRegSelected(r);
+//      }
     }
 
     private void deselectRegion(Region r) {
-      if (selectedRegions.contains(r)) {
-        selectedRegions.remove(r);
-        for (Square elem : r.getContents()) {
-          selectedSquares.remove(elem);
-        }
-        showRegDeselected(r);
-      }
+//      if (selectedRegions.contains(r)) {
+//        selectedRegions.remove(r);
+//        for (Square elem : r.getContents()) {
+//          selectedSquares.remove(elem);
+//        }
+//        showRegDeselected(r);
+//      }
     }
 
     /**
@@ -1096,14 +1102,14 @@ public class OuterPane extends javax.swing.JPanel {
      * selection lists
      */
     void clearSelections() {
-      for (Square elem : selectedSquares) {
-        showSqDeselected(elem);
-      }
-      selectedSquares.clear();
-      for (Region elem : selectedRegions) {
-        showRegDeselected(elem);
-      }
-      selectedRegions.clear();
+//      for (Square elem : selectedSquares) {
+//        showSqDeselected(elem);
+//      }
+//      selectedSquares.clear();
+//      for (Region elem : selectedRegions) {
+//        showRegDeselected(elem);
+//      }
+//      selectedRegions.clear();
     }
 
     /**
@@ -1113,183 +1119,183 @@ public class OuterPane extends javax.swing.JPanel {
      * @return true if all OK, false otherwise
      */
     boolean checkEnded() {
-      boolean checkedOK = true;
-//      System.out.println("Squares left: "+squaresLeft);
-      // temp code for debugging
-      if (playing) {
-        int permSquares = 0;
-        for (int x = 0; x < BIGSQUARES; x++) {
-          for (int y = 0; y < BIGSQUARES; y++) {
-            if (squareArray[x][y].isPermanent()) {
-              permSquares++;
-            }
-          }
-        }
-        if (permSquares + squaresLeft != BIGSQUARES * BIGSQUARES) {
-          JOptionPane.showMessageDialog(this,
-                  "Program bug: squaresLeft=" + squaresLeft
-                  + ", permSquares=" + permSquares,
-                  "Square error", JOptionPane.ERROR_MESSAGE);
-          return false;
-        }
-      }
-      //end of temp code
-
-      if (playing && (squaresLeft == 0)) {
-        Square[] checkArray = new Square[BIGSQUARES + 1];
-// first check all columns contain 1-9 and are permanent (that would be a bug)
-        for (int x = 0; x < BIGSQUARES; x++) {
-          for (int i = 0; i < checkArray.length; i++) {
-            checkArray[i] = null;
-          }
-          //run down column and mark all values
-          for (int y = 0; y < BIGSQUARES; y++) {
-            Square s = squareArray[x][y];
-            Square checkS = checkArray[s.getIntValue()];
-//  check that value has already occurred in the column
-            if (checkS != null) {
-              s.setBackColour(ERROR_BACK_COLOUR);
-              checkS.setBackColour(ERROR_BACK_COLOUR);
-              checkedOK = false;
-            }
-            if (!s.isPermanent()) {
-              checkedOK = false;
-              s.setBackColour(BUG_BACK_COLOUR);
-            }
-            checkArray[s.getIntValue()] = s;
-          }
-        }
-
-        //now check the rows
-        for (int y = 0; y < BIGSQUARES; y++) {
-          for (int i = 0; i < checkArray.length; i++) {
-            checkArray[i] = null;
-          }
-          for (int x = 0; x < BIGSQUARES; x++) {
-            Square s = squareArray[x][y];
-            Square checkS = checkArray[s.getIntValue()];
-// check that value has already occurred in the column
-            if (checkS != null) {
-
-              s.setBackColour(ERROR_BACK_COLOUR);
-              checkS.setBackColour(ERROR_BACK_COLOUR);
-              checkedOK = false;
-            }
-            if (!s.isPermanent()) {
-              checkedOK = false;
-              s.setBackColour(BUG_BACK_COLOUR);
-            }
-            checkArray[s.getIntValue()] = s;
-          }
-
-        }
-
-        // now check the big squares
-        for (int xsq = 0; xsq < BIGSQUARES; xsq += SQUARES) {
-          for (int ysq = 0; ysq < BIGSQUARES; ysq += SQUARES) {
-
-            // each big square - first reset the check array
-            for (int i = 0; i < checkArray.length; i++) {
-              checkArray[i] = null;
-            }
-            for (int x = 0; x < SQUARES; x++) {
-              for (int y = 0; y < SQUARES; y++) {
-                Square s = squareArray[xsq + x][xsq + y];
-                Square checkS = checkArray[s.getIntValue()];
-// check that value has already occurred in the column
-                if (checkS != null) {
-
-                  s.setBackColour(ERROR_BACK_COLOUR);
-                  checkS.setBackColour(ERROR_BACK_COLOUR);
-                  checkedOK = false;
-                }
-                if (!s.isPermanent()) {
-                  checkedOK = false;
-                  s.setBackColour(BUG_BACK_COLOUR);
-                }
-                checkArray[s.getIntValue()] = s;
-              }
-            }
-          }
-        }
-
-        //now check the regions
-        for (Region r : regions) {
-          int sum = 0;
-          for (int i = 0; i < checkArray.length; i++) {
-            checkArray[i] = null;
-          }
-          for (Square s : r.getContents()) {
-            int val = s.getIntValue();
-            Square checkS = checkArray[val];
-            if (checkS != null) {
-              checkedOK = false;
-              s.setBackColour(ERROR_BACK_COLOUR);
-              checkS.setBackColour(ERROR_BACK_COLOUR);
-            }
-            checkArray[val] = s;
-            sum += val;
-          }
-          if (sum != r.getTotal()) {
-            for (Square s : r.getContents()) {
-              s.setBackColour(ERROR_BACK_COLOUR); // region sum wrong
-              checkedOK = false;
-            }
-          }
-        }
-
-        // now display result
-        if (checkedOK) {
-          JOptionPane.showMessageDialog(this,
-                  "Well done, you've finished it", "Success!",
-                  JOptionPane.INFORMATION_MESSAGE);
-        } else {
-          JOptionPane.showMessageDialog(this,
-                  "Oh dear, there's been a mistake", "Failure",
-                  JOptionPane.INFORMATION_MESSAGE);
-          for (int x = 0; x < BIGSQUARES; x++) {
-            for (int y = 0; y < BIGSQUARES; y++) {
-              squareArray[x][y].setBackColour(NORMAL_BACK_COLOUR);
-            }
-          }
-        }
-        clearSelections();
-        return checkedOK;
-      }
+//      boolean checkedOK = true;
+////      System.out.println("Squares left: "+squaresLeft);
+//      // temp code for debugging
+//      if (playing) {
+//        int permSquares = 0;
+//        for (int x = 0; x < BIGSQUARES; x++) {
+//          for (int y = 0; y < BIGSQUARES; y++) {
+//            if (squareArray[x][y].isPermanent()) {
+//              permSquares++;
+//            }
+//          }
+//        }
+//        if (permSquares + squaresLeft != BIGSQUARES * BIGSQUARES) {
+//          JOptionPane.showMessageDialog(this,
+//                  "Program bug: squaresLeft=" + squaresLeft
+//                  + ", permSquares=" + permSquares,
+//                  "Square error", JOptionPane.ERROR_MESSAGE);
+//          return false;
+//        }
+//      }
+//      //end of temp code
+//
+//      if (playing && (squaresLeft == 0)) {
+//        Square[] checkArray = new Square[BIGSQUARES + 1];
+//// first check all columns contain 1-9 and are permanent (that would be a bug)
+//        for (int x = 0; x < BIGSQUARES; x++) {
+//          for (int i = 0; i < checkArray.length; i++) {
+//            checkArray[i] = null;
+//          }
+//          //run down column and mark all values
+//          for (int y = 0; y < BIGSQUARES; y++) {
+//            Square s = squareArray[x][y];
+//            Square checkS = checkArray[s.getIntValue()];
+////  check that value has already occurred in the column
+//            if (checkS != null) {
+//              s.setBackColour(ERROR_BACK_COLOUR);
+//              checkS.setBackColour(ERROR_BACK_COLOUR);
+//              checkedOK = false;
+//            }
+//            if (!s.isPermanent()) {
+//              checkedOK = false;
+//              s.setBackColour(BUG_BACK_COLOUR);
+//            }
+//            checkArray[s.getIntValue()] = s;
+//          }
+//        }
+//
+//        //now check the rows
+//        for (int y = 0; y < BIGSQUARES; y++) {
+//          for (int i = 0; i < checkArray.length; i++) {
+//            checkArray[i] = null;
+//          }
+//          for (int x = 0; x < BIGSQUARES; x++) {
+//            Square s = squareArray[x][y];
+//            Square checkS = checkArray[s.getIntValue()];
+//// check that value has already occurred in the column
+//            if (checkS != null) {
+//
+//              s.setBackColour(ERROR_BACK_COLOUR);
+//              checkS.setBackColour(ERROR_BACK_COLOUR);
+//              checkedOK = false;
+//            }
+//            if (!s.isPermanent()) {
+//              checkedOK = false;
+//              s.setBackColour(BUG_BACK_COLOUR);
+//            }
+//            checkArray[s.getIntValue()] = s;
+//          }
+//
+//        }
+//
+//        // now check the big squares
+//        for (int xsq = 0; xsq < BIGSQUARES; xsq += SQUARES) {
+//          for (int ysq = 0; ysq < BIGSQUARES; ysq += SQUARES) {
+//
+//            // each big square - first reset the check array
+//            for (int i = 0; i < checkArray.length; i++) {
+//              checkArray[i] = null;
+//            }
+//            for (int x = 0; x < SQUARES; x++) {
+//              for (int y = 0; y < SQUARES; y++) {
+//                Square s = squareArray[xsq + x][xsq + y];
+//                Square checkS = checkArray[s.getIntValue()];
+//// check that value has already occurred in the column
+//                if (checkS != null) {
+//
+//                  s.setBackColour(ERROR_BACK_COLOUR);
+//                  checkS.setBackColour(ERROR_BACK_COLOUR);
+//                  checkedOK = false;
+//                }
+//                if (!s.isPermanent()) {
+//                  checkedOK = false;
+//                  s.setBackColour(BUG_BACK_COLOUR);
+//                }
+//                checkArray[s.getIntValue()] = s;
+//              }
+//            }
+//          }
+//        }
+//
+//        //now check the regions
+//        for (Region r : regions) {
+//          int sum = 0;
+//          for (int i = 0; i < checkArray.length; i++) {
+//            checkArray[i] = null;
+//          }
+//          for (Square s : r.getContents()) {
+//            int val = s.getIntValue();
+//            Square checkS = checkArray[val];
+//            if (checkS != null) {
+//              checkedOK = false;
+//              s.setBackColour(ERROR_BACK_COLOUR);
+//              checkS.setBackColour(ERROR_BACK_COLOUR);
+//            }
+//            checkArray[val] = s;
+//            sum += val;
+//          }
+//          if (sum != r.getTotal()) {
+//            for (Square s : r.getContents()) {
+//              s.setBackColour(ERROR_BACK_COLOUR); // region sum wrong
+//              checkedOK = false;
+//            }
+//          }
+//        }
+//
+//        // now display result
+//        if (checkedOK) {
+//          JOptionPane.showMessageDialog(this,
+//                  "Well done, you've finished it", "Success!",
+//                  JOptionPane.INFORMATION_MESSAGE);
+//        } else {
+//          JOptionPane.showMessageDialog(this,
+//                  "Oh dear, there's been a mistake", "Failure",
+//                  JOptionPane.INFORMATION_MESSAGE);
+//          for (int x = 0; x < BIGSQUARES; x++) {
+//            for (int y = 0; y < BIGSQUARES; y++) {
+//              squareArray[x][y].setBackColour(NORMAL_BACK_COLOUR);
+//            }
+//          }
+//        }
+//        clearSelections();
+//        return checkedOK;
+//      }
       return false;
     }
 
     private boolean audit() {
       boolean result = true;
-      for (int x = 0; x < BIGSQUARES; x++) {
-        for (int y = 0; y < BIGSQUARES; y++) {
-          Square sq = squareArray[x][y];
-          Region r = sq.getRegion();
-          if (r != null) {
-            if (!r.getContents().contains(sq)) {
-              System.out.println("Square " + x + "," + y
-                      + " says it's in region " + r.getName());
-              result = false;
-            }
-          }
-          if (sq.getXIndex() != x || sq.getYIndex() != y) {
-            System.out.println("Square " + x + "," + y
-                    + " has coords " + sq.getXIndex() + "," + sq.getYIndex());
-            result = false;
-          }
-        }
-      }
-      for (Region r : regions) {
-        for (Square s : r.getContents()) {
-          if (s.getRegion() != r) {
-            System.out.println("Region " + r.getName()
-                    + " contains square " + s.getName());
-            System.out.println("  Its region is "
-                    + (r.getName()));
-            result = false;
-          }
-        }
-      }
+//      for (int x = 0; x < BIGSQUARES; x++) {
+//        for (int y = 0; y < BIGSQUARES; y++) {
+//          Square sq = squareArray[x][y];
+//          Region r = sq.getRegion();
+//          if (r != null) {
+//            if (!r.getContents().contains(sq)) {
+//              System.out.println("Square " + x + "," + y
+//                      + " says it's in region " + r.getName());
+//              result = false;
+//            }
+//          }
+//          if (sq.getXIndex() != x || sq.getYIndex() != y) {
+//            System.out.println("Square " + x + "," + y
+//                    + " has coords " + sq.getXIndex() + "," + sq.getYIndex());
+//            result = false;
+//          }
+//        }
+//      }
+//      for (Region r : regions) {
+//        for (Square s : r.getContents()) {
+//          if (s.getRegion() != r) {
+//            System.out.println("Region " + r.getName()
+//                    + " contains square " + s.getName());
+//            System.out.println("  Its region is "
+//                    + (r.getName()));
+//            result = false;
+//          }
+//        }
+//      }
       return result;
     }
 
@@ -1387,260 +1393,260 @@ public class OuterPane extends javax.swing.JPanel {
     // Event listeners
     @Override
     public void mouseClicked(MouseEvent e) {
-      boolean wasSelected;
-      boolean ctrlPressed;
-//      boolean shiftPressed;
-      boolean altPressed;
-      Integer intval;
-      Object s = e.getSource();
-//      int mods = e.getModifiers();
-//      ctrlPressed = ((mods & MouseEvent.CTRL_MASK) == MouseEvent.CTRL_MASK);
-//      shiftPressed = ((mods & MouseEvent.SHIFT_MASK) == MouseEvent.SHIFT_MASK);
-      ctrlPressed = e.isControlDown();
-//      shiftPressed = e.isShiftDown();
-      altPressed = e.isAltDown();
-      if (!playing && (SwingUtilities.isRightMouseButton(e) ||
-              (altPressed && SwingUtilities.isLeftMouseButton(e)) )) {
-        // setting up and getting total region - doesn't matter where the click is
-        if (newRegion != null) {
-          if (newRegion.getContents().size() <= BIGSQUARES) {
-            intval = getRegionValue(newRegion);
-            if (intval != null) {
-              if (newRegion.checkNewRegion(intval)) {
-                addRegion(newRegion);
-                squareCount += newRegion.getContents().size();
-                tk.EnableSave();
-              } else { // could not set up new region - back everything out
-                clearNewRegion();
-              }
-              newRegion = null;
-            }
-          } //if region too big - ignore click
-        } else {
-          //region selected was an existing one (if any)
-          // retotal if only one
-          if (selectedRegions.size() == 1) {
-            int oldVal;
-            newRegion = selectedRegions.iterator().next();
-            oldVal = newRegion.getTotal();
-            intval = getRegionValue(newRegion);
-            if (intval != null) {
-              newRegion.setTotal(intval);
-              regionTot += intval - oldVal;
-              newRegion.repaint();
-            }
-          } else if (!selectedRegions.isEmpty()) {
-            TestKiller.showMessage("Must select a single region to retotal");
-          }
-          newRegion = null;
-        }
-
-        if (squareCount == BIGSQUARES * BIGSQUARES) {
-          if (regionTot == MAX_TOTAL * BIGSQUARES) {
-            btnStart.setEnabled(true);
-          } else {
-            TestKiller.showMessage("Region totals have incorrect sum: "
-                    + regionTot + " should be " + MAX_TOTAL * BIGSQUARES);
-          }
-        }
-
-      } else {
-
-        if (s instanceof Square) {
-          Square sq = (Square) s;
-//        System.out.println("Square mouse clicked "+sq.getXIndex()+
-//          ","+sq.getYIndex()+":"+
-//            e.getClickCount());
-//        if (ctrlPressed || shiftPressed) {
-//          System.out.println("  "+(ctrlPressed?"ctrl ":" ")+
-//          (shiftPressed?"shift":""));
+//      boolean wasSelected;
+//      boolean ctrlPressed;
+////      boolean shiftPressed;
+//      boolean altPressed;
+//      Integer intval;
+//      Object s = e.getSource();
+////      int mods = e.getModifiers();
+////      ctrlPressed = ((mods & MouseEvent.CTRL_MASK) == MouseEvent.CTRL_MASK);
+////      shiftPressed = ((mods & MouseEvent.SHIFT_MASK) == MouseEvent.SHIFT_MASK);
+//      ctrlPressed = e.isControlDown();
+////      shiftPressed = e.isShiftDown();
+//      altPressed = e.isAltDown();
+//      if (!playing && (SwingUtilities.isRightMouseButton(e) ||
+//              (altPressed && SwingUtilities.isLeftMouseButton(e)) )) {
+//        // setting up and getting total region - doesn't matter where the click is
+//        if (newRegion != null) {
+//          if (newRegion.getContents().size() <= BIGSQUARES) {
+//            intval = getRegionValue(newRegion);
+//            if (intval != null) {
+//              if (newRegion.checkNewRegion(intval)) {
+//                addRegion(newRegion);
+//                squareCount += newRegion.getContents().size();
+//                tk.EnableSave();
+//              } else { // could not set up new region - back everything out
+//                clearNewRegion();
+//              }
+//              newRegion = null;
+//            }
+//          } //if region too big - ignore click
+//        } else {
+//          //region selected was an existing one (if any)
+//          // retotal if only one
+//          if (selectedRegions.size() == 1) {
+//            int oldVal;
+//            newRegion = selectedRegions.iterator().next();
+//            oldVal = newRegion.getTotal();
+//            intval = getRegionValue(newRegion);
+//            if (intval != null) {
+//              newRegion.setTotal(intval);
+//              regionTot += intval - oldVal;
+//              newRegion.repaint();
+//            }
+//          } else if (!selectedRegions.isEmpty()) {
+//            TestKiller.showMessage("Must select a single region to retotal");
+//          }
+//          newRegion = null;
 //        }
-          if (SwingUtilities.isLeftMouseButton(e)) {
-            if (playing) {
-              if (altPressed) {
-                displayRegionTotal();
-              }
-              else if (e.getClickCount() == 1) {
-                wasSelected = (selectedSquares.contains(sq));
-                if (!ctrlPressed) {
-                  clearSelections();
-                  if (!wasSelected) {
-                    selectSquare(sq);
-                  }
-                } else if (!selectedRegions.contains(sq.getRegion())) {
-                  //only toggle if not in a selected region
-                  if (wasSelected) {
-                    deselectSq(sq);
-                  } else {
-                    selectSquare(sq);
-                  }
-                }
-
-              } else {  // double-click - work on region
-
-                Region r = sq.getRegion();
-                wasSelected = (selectedRegions.contains(r));
-                if (!ctrlPressed) {
-                  clearSelections();
-                  if (!wasSelected) {
-                    selectRegion(r);
-                  }
-                } else {  // ctrl-double click
-
-                  if (wasSelected) {
-                    deselectRegion(r);
-                  } else {  // new selection
-                    //first remove any selected squares in that region
-
-                    for (Square regionSq : r.getContents()) {
-                      selectedSquares.remove(regionSq);
-                    }
-                    selectRegion(r);
-                  }
-                }
-              }
-              darken(sq, true);
-            } else {  //setting up - only regions selectable
-
-              if (e.getClickCount() > 1) { //only double-click allowed
-                //single-click handled by mouse pressed/released
-
-                Region r = sq.getRegion();
-                if (r != null && r != newRegion) {
-                  clearNewRegion();
-                  if (selectedRegions.contains(r)) {
-                    deselectRegion(r);
-                  } else {
-                    selectRegion(r);
-                  }
-                }
-              }
-            }
-          } else if (SwingUtilities.isRightMouseButton(e)) {
-            if (playing) {
-              displayRegionTotal();
-            } else {    //setting up - should not happen
-              System.out.println("Mouse code wrong");
-
-            }
-
-          }
-
-        } else {
-          System.out.println("Unknown mouse click "
-                  + e.getX() + "," + e.getY());
-        }
-      }
+//
+//        if (squareCount == BIGSQUARES * BIGSQUARES) {
+//          if (regionTot == MAX_TOTAL * BIGSQUARES) {
+//            btnStart.setEnabled(true);
+//          } else {
+//            TestKiller.showMessage("Region totals have incorrect sum: "
+//                    + regionTot + " should be " + MAX_TOTAL * BIGSQUARES);
+//          }
+//        }
+//
+//      } else {
+//
+//        if (s instanceof Square) {
+//          Square sq = (Square) s;
+////        System.out.println("Square mouse clicked "+sq.getXIndex()+
+////          ","+sq.getYIndex()+":"+
+////            e.getClickCount());
+////        if (ctrlPressed || shiftPressed) {
+////          System.out.println("  "+(ctrlPressed?"ctrl ":" ")+
+////          (shiftPressed?"shift":""));
+////        }
+//          if (SwingUtilities.isLeftMouseButton(e)) {
+//            if (playing) {
+//              if (altPressed) {
+//                displayRegionTotal();
+//              }
+//              else if (e.getClickCount() == 1) {
+//                wasSelected = (selectedSquares.contains(sq));
+//                if (!ctrlPressed) {
+//                  clearSelections();
+//                  if (!wasSelected) {
+//                    selectSquare(sq);
+//                  }
+//                } else if (!selectedRegions.contains(sq.getRegion())) {
+//                  //only toggle if not in a selected region
+//                  if (wasSelected) {
+//                    deselectSq(sq);
+//                  } else {
+//                    selectSquare(sq);
+//                  }
+//                }
+//
+//              } else {  // double-click - work on region
+//
+//                Region r = sq.getRegion();
+//                wasSelected = (selectedRegions.contains(r));
+//                if (!ctrlPressed) {
+//                  clearSelections();
+//                  if (!wasSelected) {
+//                    selectRegion(r);
+//                  }
+//                } else {  // ctrl-double click
+//
+//                  if (wasSelected) {
+//                    deselectRegion(r);
+//                  } else {  // new selection
+//                    //first remove any selected squares in that region
+//
+//                    for (Square regionSq : r.getContents()) {
+//                      selectedSquares.remove(regionSq);
+//                    }
+//                    selectRegion(r);
+//                  }
+//                }
+//              }
+//              darken(sq, true);
+//            } else {  //setting up - only regions selectable
+//
+//              if (e.getClickCount() > 1) { //only double-click allowed
+//                //single-click handled by mouse pressed/released
+//
+//                Region r = sq.getRegion();
+//                if (r != null && r != newRegion) {
+//                  clearNewRegion();
+//                  if (selectedRegions.contains(r)) {
+//                    deselectRegion(r);
+//                  } else {
+//                    selectRegion(r);
+//                  }
+//                }
+//              }
+//            }
+//          } else if (SwingUtilities.isRightMouseButton(e)) {
+//            if (playing) {
+//              displayRegionTotal();
+//            } else {    //setting up - should not happen
+//              System.out.println("Mouse code wrong");
+//
+//            }
+//
+//          }
+//
+//        } else {
+//          System.out.println("Unknown mouse click "
+//                  + e.getX() + "," + e.getY());
+//        }
+//      }
     }
 
     void displayRegionTotal() throws HeadlessException {
-      int total = 0;
-      for (Region r : selectedRegions) {
-        total += r.getTotal();
-      }
-      for (Square sq1 : selectedSquares) {
-        if (!selectedRegions.contains(sq1.getRegion())) {
-          total += sq1.getIntValue();
-        }
-      }
-      int bigCount = total / MAX_TOTAL;
-      int bigRem = total % MAX_TOTAL;
-      String remString = "+" + bigRem;
-      if (bigRem > MAX_TOTAL / 2) {
-        bigCount += 1;
-        bigRem -= MAX_TOTAL;
-        remString = "" + bigRem;
-      }
-      JOptionPane.showMessageDialog(this,
-              (total == 0 ? "No values in selection"
-                      : "Total is " + total + "=" + MAX_TOTAL + "*"
-                              + bigCount + remString),
-              "Total for selected squares",
-              JOptionPane.INFORMATION_MESSAGE);
+//      int total = 0;
+//      for (Region r : selectedRegions) {
+//        total += r.getTotal();
+//      }
+//      for (Square sq1 : selectedSquares) {
+//        if (!selectedRegions.contains(sq1.getRegion())) {
+//          total += sq1.getIntValue();
+//        }
+//      }
+//      int bigCount = total / MAX_TOTAL;
+//      int bigRem = total % MAX_TOTAL;
+//      String remString = "+" + bigRem;
+//      if (bigRem > MAX_TOTAL / 2) {
+//        bigCount += 1;
+//        bigRem -= MAX_TOTAL;
+//        remString = "" + bigRem;
+//      }
+//      JOptionPane.showMessageDialog(this,
+//              (total == 0 ? "No values in selection"
+//                      : "Total is " + total + "=" + MAX_TOTAL + "*"
+//                              + bigCount + remString),
+//              "Total for selected squares",
+//              JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-      if (SwingUtilities.isLeftMouseButton(e)) {
-        leftMouseDown = true;
-      }
-      Object s = e.getSource();
-      if (s instanceof Square) {
-        Square sq = (Square) s;
-        //        System.out.println("Square mouse pressed "+
-//        sq.getXIndex()+","+sq.getYIndex());
-
-        if (SwingUtilities.isLeftMouseButton(e) && !e.isAltDown()) {
-          if (!playing) {
-            for (Region r : selectedRegions) {
-              deselectRegion(r);
-            }
-            addSquareToRegion(sq);
-          } else { //playing - start a drag
-            draggedSquare = sq;
-            initialDraggedSquare = sq;
-            firstDrag = true;
-          }
-        }
-      }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-      if (SwingUtilities.isLeftMouseButton(e)) {
-        leftMouseDown = false;
-        if (playing) {
-          draggedSquare = null;
-          initialDraggedSquare = null;
-          firstDrag = false;
-          gameFinished = checkEnded();
-        }
-      }
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-      Square sq;
-      tk.toFront();
-      if (leftMouseDown & !playing) {
-        mousePressed(e);
-      }
-      Object s = e.getSource();
-      if (s instanceof Square) {
-        sq = (Square) s;
-        mouseSqX = sq.getXIndex();
-        mouseSqY = sq.getYIndex();
-        darken(sq, false);
-        if (playing) {
-          if (draggedSquare != null) {
-            swapSquares(sq, draggedSquare, false, firstDrag);
-            if (e.isControlDown()) {
-              swapSquares(draggedSquare, initialDraggedSquare, false, false);
-            }
-            firstDrag = false;
-            draggedSquare = sq;
-          }
-        }
-      }
-      requestFocusInWindow();
+//      if (SwingUtilities.isLeftMouseButton(e)) {
+//        leftMouseDown = true;
+//      }
+//      Object s = e.getSource();
+//      if (s instanceof Square) {
+//        Square sq = (Square) s;
+//        //        System.out.println("Square mouse pressed "+
+////        sq.getXIndex()+","+sq.getYIndex());
+//
+//        if (SwingUtilities.isLeftMouseButton(e) && !e.isAltDown()) {
+//          if (!playing) {
+//            for (Region r : selectedRegions) {
+//              deselectRegion(r);
+//            }
+//            addSquareToRegion(sq);
+//          } else { //playing - start a drag
+//            draggedSquare = sq;
+//            initialDraggedSquare = sq;
+//            firstDrag = true;
+//          }
+//        }
+//      }
+//    }
+//
+//    @Override
+//    public void mouseReleased(MouseEvent e) {
+//      if (SwingUtilities.isLeftMouseButton(e)) {
+//        leftMouseDown = false;
+//        if (playing) {
+//          draggedSquare = null;
+//          initialDraggedSquare = null;
+//          firstDrag = false;
+//          gameFinished = checkEnded();
+//        }
+//      }
+//    }
+//
+//    @Override
+//    public void mouseEntered(MouseEvent e) {
+//      Square sq;
+//      tk.toFront();
+//      if (leftMouseDown & !playing) {
+//        mousePressed(e);
+//      }
+//      Object s = e.getSource();
+//      if (s instanceof Square) {
+//        sq = (Square) s;
+//        mouseSqX = sq.getXIndex();
+//        mouseSqY = sq.getYIndex();
+//        darken(sq, false);
+//        if (playing) {
+//          if (draggedSquare != null) {
+//            swapSquares(sq, draggedSquare, false, firstDrag);
+//            if (e.isControlDown()) {
+//              swapSquares(draggedSquare, initialDraggedSquare, false, false);
+//            }
+//            firstDrag = false;
+//            draggedSquare = sq;
+//          }
+//        }
+//      }
+//      requestFocusInWindow();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-      Square sq;
-      Object s = e.getSource();
-      if (s instanceof Square) {
-        sq = (Square) s;
-        lighten(sq);
-        if (playing) {
-//        System.out.println("Exit and lighten "+ mouseSqX+", "+mouseSqY);
-          if (mouseSqX == sq.getXIndex() && mouseSqY == sq.getYIndex()
-                  && !selectedSquares.contains((Square) s)) {
-            mouseSqX = -1;
-            mouseSqY = -1;
-          }
-        }
-      }
+//      Square sq;
+//      Object s = e.getSource();
+//      if (s instanceof Square) {
+//        sq = (Square) s;
+//        lighten(sq);
+//        if (playing) {
+////        System.out.println("Exit and lighten "+ mouseSqX+", "+mouseSqY);
+//          if (mouseSqX == sq.getXIndex() && mouseSqY == sq.getYIndex()
+//                  && !selectedSquares.contains((Square) s)) {
+//            mouseSqX = -1;
+//            mouseSqY = -1;
+//          }
+//        }
+//      }
     }
 
     /**
@@ -1657,155 +1663,155 @@ public class OuterPane extends javax.swing.JPanel {
      */
     @Override
     public void keyTyped(KeyEvent e) {
-      char c = Character.toUpperCase(e.getKeyChar());
-      if (playing) {
-        if (mouseSqX >= 0) {
-          Square s = squareArray[mouseSqX][mouseSqY];
-          Move m;
-
-          if ('1' <= c && c <= '9') {
-            m = new Move(true, s);
-            int newval = c - '0';
-            if ((!s.isPermanent()) && currentRealColor.equals(PERM_COLOUR)) {
-              squaresLeft--;
-            }
-            if (s.isPermanent() && (!currentRealColor.equals(PERM_COLOUR))) {
-              squaresLeft++;
-            }
-            s.setTextColour(currentRealColor);
-            s.setValue(newval);
-            s.repaint();
-            m.updateFromSquare(s);
-            addMove(m);
-          } else if (c == '0' || c == ' ') {
-            if (s.getIntValue() != 0) {
-              m = new Move(true, s);
-              if (s.isPermanent()) {
-                squaresLeft++;
-              }
-              s.setConfinedToCol(false);
-              s.setConfinedToRow(false);
-              s.setConfinedToSq(false);
-              s.setValue(0);
-              s.repaint();
-              m.updateFromSquare(s);
-              addMove(m);
-            }
-          } else if ((c == '-') && s.hasValue()) {
-            m = new Move(true, s);
-            s.toggleConfineRow();
-            m.updateFromSquare(s);
-            addMove(m);
-          } else if ((c == '/') && s.hasValue()) {
-            m = new Move(true, s);
-            s.toggleConfineCol();
-            m.updateFromSquare(s);
-            addMove(m);
-          } else if ((c == '*') && s.hasValue()) {
-            m = new Move(true, s);
-            s.toggleConfineSq();
-            m.updateFromSquare(s);
-            addMove(m);
-          } else if (c == '+') {
-            swapSelSquares(false);
-// swap temp and perm colours
-          } else if ((c == '.') && s.hasValue()) {
-            m = new Move(true, s);
-            if (s.hasValue()) {
-              if (s.isPermanent()) {
-                s.setTextColour(TEMP_COLOUR);
-                squaresLeft++;
-              } else {
-                s.setTextColour(PERM_COLOUR);
-                s.setConfinedToCol(false);
-                s.setConfinedToRow(false);
-                s.setConfinedToSq(false);
-                squaresLeft--;
-              }
-            }
-            s.repaint();
-            m.updateFromSquare(s);
-            addMove(m);
-          }
-        }
-
-        switch (c) {
-          case '\b':
-            undoLastMove();
-            break;
-
-          case 'P':
-            rbtPerm.setSelected(true);
-            currentRealColor = PERM_COLOUR;
-            break;
-
-          case 'T':
-            rbtTemp.setSelected(true);
-            currentRealColor = TEMP_COLOUR;
-            break;
-
-          case 'C':
-            rbtCustom.setSelected(true);
-            currentRealColor = customColour;
-            break;
-
-          case 'S':
-            swapSelSquares(false);
-            break;
-
-          default:
-            break;
-        }
-
-      }
-      if (!gameFinished) {
-        gameFinished = checkEnded();
-      }
+//      char c = Character.toUpperCase(e.getKeyChar());
+//      if (playing) {
+//        if (mouseSqX >= 0) {
+//          Square s = squareArray[mouseSqX][mouseSqY];
+//          Move m;
+//
+//          if ('1' <= c && c <= '9') {
+//            m = new Move(true, s);
+//            int newval = c - '0';
+//            if ((!s.isPermanent()) && currentRealColor.equals(PERM_COLOUR)) {
+//              squaresLeft--;
+//            }
+//            if (s.isPermanent() && (!currentRealColor.equals(PERM_COLOUR))) {
+//              squaresLeft++;
+//            }
+//            s.setTextColour(currentRealColor);
+//            s.setValue(newval);
+//            s.repaint();
+//            m.updateFromSquare(s);
+//            addMove(m);
+//          } else if (c == '0' || c == ' ') {
+//            if (s.getIntValue() != 0) {
+//              m = new Move(true, s);
+//              if (s.isPermanent()) {
+//                squaresLeft++;
+//              }
+//              s.setConfinedToCol(false);
+//              s.setConfinedToRow(false);
+//              s.setConfinedToSq(false);
+//              s.setValue(0);
+//              s.repaint();
+//              m.updateFromSquare(s);
+//              addMove(m);
+//            }
+//          } else if ((c == '-') && s.hasValue()) {
+//            m = new Move(true, s);
+//            s.toggleConfineRow();
+//            m.updateFromSquare(s);
+//            addMove(m);
+//          } else if ((c == '/') && s.hasValue()) {
+//            m = new Move(true, s);
+//            s.toggleConfineCol();
+//            m.updateFromSquare(s);
+//            addMove(m);
+//          } else if ((c == '*') && s.hasValue()) {
+//            m = new Move(true, s);
+//            s.toggleConfineSq();
+//            m.updateFromSquare(s);
+//            addMove(m);
+//          } else if (c == '+') {
+//            swapSelSquares(false);
+//// swap temp and perm colours
+//          } else if ((c == '.') && s.hasValue()) {
+//            m = new Move(true, s);
+//            if (s.hasValue()) {
+//              if (s.isPermanent()) {
+//                s.setTextColour(TEMP_COLOUR);
+//                squaresLeft++;
+//              } else {
+//                s.setTextColour(PERM_COLOUR);
+//                s.setConfinedToCol(false);
+//                s.setConfinedToRow(false);
+//                s.setConfinedToSq(false);
+//                squaresLeft--;
+//              }
+//            }
+//            s.repaint();
+//            m.updateFromSquare(s);
+//            addMove(m);
+//          }
+//        }
+//
+//        switch (c) {
+//          case '\b':
+//            undoLastMove();
+//            break;
+//
+//          case 'P':
+//            rbtPerm.setSelected(true);
+//            currentRealColor = PERM_COLOUR;
+//            break;
+//
+//          case 'T':
+//            rbtTemp.setSelected(true);
+//            currentRealColor = TEMP_COLOUR;
+//            break;
+//
+//          case 'C':
+//            rbtCustom.setSelected(true);
+//            currentRealColor = customColour;
+//            break;
+//
+//          case 'S':
+//            swapSelSquares(false);
+//            break;
+//
+//          default:
+//            break;
+//        }
+//
+//      }
+//      if (!gameFinished) {
+//        gameFinished = checkEnded();
+//      }
     }
 
     private void addMove(final Move m) {
-      for (int i = moveList.size() - 1; i > movePointer; i--) {
-        moveList.remove(i);
-      }
-      moveList.add(m);
-      movePointer++;
-      tk.EnableSave();
+//      for (int i = moveList.size() - 1; i > movePointer; i--) {
+//        moveList.remove(i);
+//      }
+//      moveList.add(m);
+//      movePointer++;
+//      tk.EnableSave();
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-      int i = e.getKeyCode();
-      String s = KeyEvent.getKeyText(i);
-      if ("Escape".equals(s) && tk != null) {
-        tk.minimiseMe();
-      } else if (playing) {
-        if (e.isControlDown()) {
-          if (i == KeyEvent.VK_RIGHT || i == KeyEvent.VK_KP_RIGHT) {
-            redoNextMove();
-          } else if (i == KeyEvent.VK_LEFT || i == KeyEvent.VK_KP_LEFT) {
-            undoLastMove();
-          }
-        }
-      } else {
-        if (i == KeyEvent.VK_DELETE) {
-          for (Region r : selectedRegions) {
-            regionTot -= r.getTotal();
-            squareCount -= r.getSquareCount();
-            for (Square sq : r.getContents()) {
-              sq.setRegion(null);
-            }
-            showRegDeselected(r);
-            remove(r);
-            regions.remove(r);
-            repaint(r.getBounds());
-          }
-          selectedRegions.clear();
-//        System.out.println("New region total "+regionTot+
-//          ", square count "+squareCount);
-//        repaint();
-        }
-      }
-//      System.out.println("Key "+i+", "+s+" pressed");
+//      int i = e.getKeyCode();
+//      String s = KeyEvent.getKeyText(i);
+//      if ("Escape".equals(s) && tk != null) {
+//        tk.minimiseMe();
+//      } else if (playing) {
+//        if (e.isControlDown()) {
+//          if (i == KeyEvent.VK_RIGHT || i == KeyEvent.VK_KP_RIGHT) {
+//            redoNextMove();
+//          } else if (i == KeyEvent.VK_LEFT || i == KeyEvent.VK_KP_LEFT) {
+//            undoLastMove();
+//          }
+//        }
+//      } else {
+//        if (i == KeyEvent.VK_DELETE) {
+//          for (Region r : selectedRegions) {
+//            regionTot -= r.getTotal();
+//            squareCount -= r.getSquareCount();
+//            for (Square sq : r.getContents()) {
+//              sq.setRegion(null);
+//            }
+//            showRegDeselected(r);
+//            remove(r);
+//            regions.remove(r);
+//            repaint(r.getBounds());
+//          }
+//          selectedRegions.clear();
+////        System.out.println("New region total "+regionTot+
+////          ", square count "+squareCount);
+////        repaint();
+//        }
+//      }
+////      System.out.println("Key "+i+", "+s+" pressed");
     }
 
     @Override
@@ -1814,109 +1820,109 @@ public class OuterPane extends javax.swing.JPanel {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-      Move m;
-      boolean firstMove = true;
-
-      Object o = e.getSource();
-      if (o == btnStart) {
-        if (squareCount == BIGSQUARES * BIGSQUARES
-                && regionTot == MAX_TOTAL * BIGSQUARES) {
-          moveToPlaying();
-        } else {
-          TestKiller.showMessage("Totals incorrect - program error!");
-        }
-      } else if (o == rbtPerm) {
-//        currColType = CurrentColour.PERMANENT;
-        currentRealColor = PERM_COLOUR;
-      } else if (o == rbtTemp) {
-//        currColType = CurrentColour.TEMPORARY;
-        currentRealColor = TEMP_COLOUR;
-      } else if (o == rbtCustom) {
-//        currColType = CurrentColour.CUSTOM;
-        currentRealColor = customColour;
-      } else if (o == rbtCustom2) {
-//        currColType = CurrentColour.CUSTOM2;
-        currentRealColor = customColour2;
-      } else if (o == btnSq) {
-        for (Square s : selectedSquares) {
-          m = new Move(firstMove, s);
-          firstMove = false;
-          s.toggleConfineSq();
-          m.updateFromSquare(s);
-          addMove(m);
-        }
-
-      } else if (o == btnRow) {
-        for (Square s : selectedSquares) {
-          m = new Move(firstMove, s);
-          firstMove = false;
-          s.toggleConfineRow();
-          m.updateFromSquare(s);
-          addMove(m);
-        }
-
-      } else if (o == btnCol) {
-        for (Square s : selectedSquares) {
-          m = new Move(firstMove, s);
-          firstMove = false;
-          s.toggleConfineCol();
-          m.updateFromSquare(s);
-          addMove(m);
-        }
-
-      } else if (o == btnTtoP) {
-        for (Square s : selectedSquares) {
-          m = new Move(firstMove, s);
-          firstMove = false;
-          if (s.hasValue() && !s.isPermanent()) {
-            squaresLeft--;
-          }
-          s.setTextColour(PERM_COLOUR);
-          s.setConfinedToCol(false);
-          s.setConfinedToRow(false);
-          s.setConfinedToSq(false);
-          s.repaint();
-          m.updateFromSquare(s);
-          addMove(m);
-        }
-      } else if (o == btnPtoT) {
-        for (Square s : selectedSquares) {
-          m = new Move(firstMove, s);
-          firstMove = false;
-          if (s.hasValue() && s.isPermanent()) {
-            squaresLeft++;
-          }
-          s.setTextColour(TEMP_COLOUR);
-          s.setConfinedToCol(false);
-          s.setConfinedToRow(false);
-          s.setConfinedToSq(false);
-          s.repaint();
-          m.updateFromSquare(s);
-          addMove(m);
-        }
-      } else if (o == btnSwap) {
-        swapSelSquares(false);
-      } else if (o == btnSwapPerm) {
-        swapSelSquares(true);
-      } else if (o == btnCustomCol) {
-        jd.setVisible(true);
-      } else if (o == btnUndo) {
-        undoLastMove();
-      } else if (o == btnRedo) {
-        redoNextMove();
-      } else if (o instanceof JButton) {
-        JButton jb = (JButton) o;
-        if (jb.getRootPane() == jd.getRootPane()) {
-          String s = e.getActionCommand();
-          if (s.equals("OK")) {
-            changeCustomColour(cc.getColor());
-          }
-        }
-      } else {
-        TestKiller.showMessage("program error - non-button action from source "
-                + o);
-      }
-      gameFinished = checkEnded();
+//      Move m;
+//      boolean firstMove = true;
+//
+//      Object o = e.getSource();
+//      if (o == btnStart) {
+//        if (squareCount == BIGSQUARES * BIGSQUARES
+//                && regionTot == MAX_TOTAL * BIGSQUARES) {
+//          moveToPlaying();
+//        } else {
+//          TestKiller.showMessage("Totals incorrect - program error!");
+//        }
+//      } else if (o == rbtPerm) {
+////        currColType = CurrentColour.PERMANENT;
+//        currentRealColor = PERM_COLOUR;
+//      } else if (o == rbtTemp) {
+////        currColType = CurrentColour.TEMPORARY;
+//        currentRealColor = TEMP_COLOUR;
+//      } else if (o == rbtCustom) {
+////        currColType = CurrentColour.CUSTOM;
+//        currentRealColor = customColour;
+//      } else if (o == rbtCustom2) {
+////        currColType = CurrentColour.CUSTOM2;
+//        currentRealColor = customColour2;
+//      } else if (o == btnSq) {
+//        for (Square s : selectedSquares) {
+//          m = new Move(firstMove, s);
+//          firstMove = false;
+//          s.toggleConfineSq();
+//          m.updateFromSquare(s);
+//          addMove(m);
+//        }
+//
+//      } else if (o == btnRow) {
+//        for (Square s : selectedSquares) {
+//          m = new Move(firstMove, s);
+//          firstMove = false;
+//          s.toggleConfineRow();
+//          m.updateFromSquare(s);
+//          addMove(m);
+//        }
+//
+//      } else if (o == btnCol) {
+//        for (Square s : selectedSquares) {
+//          m = new Move(firstMove, s);
+//          firstMove = false;
+//          s.toggleConfineCol();
+//          m.updateFromSquare(s);
+//          addMove(m);
+//        }
+//
+//      } else if (o == btnTtoP) {
+//        for (Square s : selectedSquares) {
+//          m = new Move(firstMove, s);
+//          firstMove = false;
+//          if (s.hasValue() && !s.isPermanent()) {
+//            squaresLeft--;
+//          }
+//          s.setTextColour(PERM_COLOUR);
+//          s.setConfinedToCol(false);
+//          s.setConfinedToRow(false);
+//          s.setConfinedToSq(false);
+//          s.repaint();
+//          m.updateFromSquare(s);
+//          addMove(m);
+//        }
+//      } else if (o == btnPtoT) {
+//        for (Square s : selectedSquares) {
+//          m = new Move(firstMove, s);
+//          firstMove = false;
+//          if (s.hasValue() && s.isPermanent()) {
+//            squaresLeft++;
+//          }
+//          s.setTextColour(TEMP_COLOUR);
+//          s.setConfinedToCol(false);
+//          s.setConfinedToRow(false);
+//          s.setConfinedToSq(false);
+//          s.repaint();
+//          m.updateFromSquare(s);
+//          addMove(m);
+//        }
+//      } else if (o == btnSwap) {
+//        swapSelSquares(false);
+//      } else if (o == btnSwapPerm) {
+//        swapSelSquares(true);
+//      } else if (o == btnCustomCol) {
+//        jd.setVisible(true);
+//      } else if (o == btnUndo) {
+//        undoLastMove();
+//      } else if (o == btnRedo) {
+//        redoNextMove();
+//      } else if (o instanceof JButton) {
+//        JButton jb = (JButton) o;
+//        if (jb.getRootPane() == jd.getRootPane()) {
+//          String s = e.getActionCommand();
+//          if (s.equals("OK")) {
+//            changeCustomColour(cc.getColor());
+//          }
+//        }
+//      } else {
+//        TestKiller.showMessage("program error - non-button action from source "
+//                + o);
+//      }
+//      gameFinished = checkEnded();
     }
 
     private void changeCustomColour(final Color newColour) {
@@ -1942,31 +1948,31 @@ public class OuterPane extends javax.swing.JPanel {
 
     private void swapSelSquares(boolean toPerm) {
 //      Move m;
-      Square s;
-      Square s0 = null;
-      Square s1 = null;
-      boolean swapping;
-//      Object[] swapArray;
-
-      swapping = (selectedSquares.size() == 2);
-      for (Iterator it = selectedSquares.iterator(); it.hasNext();) {
-        Object elem = it.next();
-        if (elem instanceof Square) {
-          s = (Square) elem;
-          if (swapping || !s.isPermanent()) {
-            if (s0 == null) {
-              s0 = s;
-            } else if (s1 == null) {
-              s1 = s;
-            } else {
-              return;
-            }
-          }
-        }
-      }
-      if (s0 != null && s1 != null) {
-        swapSquares(s0, s1, toPerm, true);
-      }
+//      Square s;
+//      Square s0 = null;
+//      Square s1 = null;
+//      boolean swapping;
+////      Object[] swapArray;
+//
+//      swapping = (selectedSquares.size() == 2);
+//      for (Iterator it = selectedSquares.iterator(); it.hasNext();) {
+//        Object elem = it.next();
+//        if (elem instanceof Square) {
+//          s = (Square) elem;
+//          if (swapping || !s.isPermanent()) {
+//            if (s0 == null) {
+//              s0 = s;
+//            } else if (s1 == null) {
+//              s1 = s;
+//            } else {
+//              return;
+//            }
+//          }
+//        }
+//      }
+//      if (s0 != null && s1 != null) {
+//        swapSquares(s0, s1, toPerm, true);
+//      }
     }
 
     void addListeners() {
@@ -1987,6 +1993,16 @@ public class OuterPane extends javax.swing.JPanel {
       btnRedo.addActionListener(this);
       addMouseListener(this);
       addKeyListener(this);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   }
   // Variables declaration - do not modify//GEN-BEGIN:variables
