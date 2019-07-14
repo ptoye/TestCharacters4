@@ -7,27 +7,11 @@ package com.ptoye.TestKiller;
 
 //import com.ptoye.partitions5.PartitionEventListener;
 //import com.ptoye.partitions5.Partitions;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
-import java.awt.event.ItemEvent;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -50,35 +34,35 @@ public class TestKiller extends javax.swing.JFrame
   static final long serialVersionUID = 1L;
   static final String titleString = "Killer Su Doku v.1.2";
   private OuterPane op = null;
-  private String filename = null;
-  private File gameSaveFile = null;
-  private File lastDirectory = null;
-  private final String fileExtension = "ksd";
+//  private String filename = null;
+//  private File gameSaveFile = null;
+//  private File lastDirectory = null;
+//  private final String fileExtension = "ksd";
 //  private Partitions partitionWindow = null;
   private boolean pwIconified = false; //remembers if partitions window iconified when main window iconified
 //  private TestKiller tk = null;
 //  private boolean pwShown = false;
   private static String firstArg = null;
   private boolean dirty = false;
-  private Icon showPartsIcon = null;
-  private Icon hidePartsIcon = null;
+//  private Icon showPartsIcon = null;
+//  private Icon hidePartsIcon = null;
   private GraphicsEnvironment ge;
   private Rectangle screensize;
-  private KDSFileFilter kDSff = new KDSFileFilter();
+//  private KDSFileFilter kDSff = new KDSFileFilter();
 
   /**
    * Creates new form TestKiller
    */
   public TestKiller() {
-    String userHome;
-    userHome = System.getProperty("user.home");
-    lastDirectory = new File(userHome, "/Desktop");
+//    String userHome;
+//    userHome = System.getProperty("user.home");
+//    lastDirectory = new File(userHome, "/Desktop");
     initComponents();
-    showPartsIcon = btnPartitions.getIcon();
-    hidePartsIcon = new ImageIcon(getClass().getResource("images/HidePartitions.gif"));
-    if (hidePartsIcon == null) {
-      return;
-    }
+//    showPartsIcon = btnPartitions.getIcon();
+//    hidePartsIcon = new ImageIcon(getClass().getResource("images/HidePartitions.gif"));
+//    if (hidePartsIcon == null) {
+//      return;
+//    }
     op = new OuterPane(this);
     getContentPane().add(op);
 //    setContentPane(op);
@@ -400,7 +384,7 @@ public class TestKiller extends javax.swing.JFrame
 //      partitionWindow.setLocationRelativeTo(this);
 //    }
     if (op != null) {
-      op.startTimer();
+//      op.startTimer();
     }
   }//GEN-LAST:event_formWindowActivated
 
@@ -446,66 +430,66 @@ public class TestKiller extends javax.swing.JFrame
 //    op.print();
 //  }
   private void jmiSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSaveAsActionPerformed
-
-    JFileChooser jfc = new JFileChooser();
-    jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-    jfc.setMultiSelectionEnabled(false);
-    jfc.addChoosableFileFilter(jfc.getAcceptAllFileFilter());
-//    jfc.addChoosableFileFilter(new KDSFileFilter());
-    jfc.setFileFilter(kDSff);
-    jfc.setCurrentDirectory(lastDirectory);
-    jfc.setSelectedFile(gameSaveFile);
-    int saveResult = jfc.showSaveDialog(this);
-    if (saveResult == JFileChooser.APPROVE_OPTION) {
-      gameSaveFile = jfc.getSelectedFile();
-      if (gameSaveFile == null) {
-        showMessage("Null file found");
-        return;
-      }
-      int i = gameSaveFile.getName().lastIndexOf(".");
-      if (i == -1) {
-        gameSaveFile = new File(gameSaveFile.getAbsolutePath() + "." + fileExtension);
-      }
-      if (gameSaveFile.exists()) {
-        if (JOptionPane.showConfirmDialog(this,
-                "File already exists - do you want to overwrite it?",
-                "Backup to file",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
-          return;
-        }
-      }
-      setFileName();
-      lastDirectory = jfc.getCurrentDirectory();
-      saveGameToFile(gameSaveFile);
-    }
+//
+//    JFileChooser jfc = new JFileChooser();
+//    jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//    jfc.setMultiSelectionEnabled(false);
+//    jfc.addChoosableFileFilter(jfc.getAcceptAllFileFilter());
+////    jfc.addChoosableFileFilter(new KDSFileFilter());
+//    jfc.setFileFilter(kDSff);
+//    jfc.setCurrentDirectory(lastDirectory);
+//    jfc.setSelectedFile(gameSaveFile);
+//    int saveResult = jfc.showSaveDialog(this);
+//    if (saveResult == JFileChooser.APPROVE_OPTION) {
+//      gameSaveFile = jfc.getSelectedFile();
+//      if (gameSaveFile == null) {
+//        showMessage("Null file found");
+//        return;
+//      }
+//      int i = gameSaveFile.getName().lastIndexOf(".");
+//      if (i == -1) {
+//        gameSaveFile = new File(gameSaveFile.getAbsolutePath() + "." + fileExtension);
+//      }
+//      if (gameSaveFile.exists()) {
+//        if (JOptionPane.showConfirmDialog(this,
+//                "File already exists - do you want to overwrite it?",
+//                "Backup to file",
+//                JOptionPane.YES_NO_OPTION,
+//                JOptionPane.QUESTION_MESSAGE) == JOptionPane.NO_OPTION) {
+//          return;
+//        }
+//      }
+//      setFileName();
+//      lastDirectory = jfc.getCurrentDirectory();
+//      saveGameToFile(gameSaveFile);
+//    }
   }//GEN-LAST:event_jmiSaveAsActionPerformed
 
-  private void setFileName() {
-    filename = gameSaveFile.getName();
-    setTitle(titleString + " " + filename);
-  }
+//  private void setFileName() {
+//    filename = gameSaveFile.getName();
+//    setTitle(titleString + " " + filename);
+//  }
 
-  private void saveGameToFile(final File f) {
-    ObjectOutputStream oos;
-    try {
-      oos = new ObjectOutputStream(new FileOutputStream(f));
-      if (oos != null) {
-        System.out.println("Saving game to " + f.getName());
-        op.getGp().saveGame(oos);
-        try {
-          oos.close();
-        } catch (IOException ex) {
-        }
-      }
-    } catch (FileNotFoundException ex) {
-      showMessage("Cannot find file " + f.getName());
-//      return;
-    } catch (IOException ex) {
-      showMessage("Cannot open file " + f.getName());
-//      return;
-    }
-  }
+//  private void saveGameToFile(final File f) {
+//    ObjectOutputStream oos;
+//    try {
+//      oos = new ObjectOutputStream(new FileOutputStream(f));
+//      if (oos != null) {
+//        System.out.println("Saving game to " + f.getName());
+//        op.getGp().saveGame(oos);
+//        try {
+//          oos.close();
+//        } catch (IOException ex) {
+//        }
+//      }
+//    } catch (FileNotFoundException ex) {
+//      showMessage("Cannot find file " + f.getName());
+////      return;
+//    } catch (IOException ex) {
+//      showMessage("Cannot open file " + f.getName());
+////      return;
+//    }
+//  }
 
   /**
    * Used to check whether the player wants to save a game before exiting or
@@ -520,29 +504,30 @@ public class TestKiller extends javax.swing.JFrame
    */
   private boolean testDirtySave() {
     if (dirty) {
-      int dialogAnswer = JOptionPane.showConfirmDialog(this,
-              "You have an unsaved game. Save it?",
-              "Killer Sudoku",
-              JOptionPane.YES_NO_CANCEL_OPTION);
-
-      switch (dialogAnswer) {
-        case JOptionPane.CANCEL_OPTION:
-          return false;
-
-        case JOptionPane.YES_OPTION:
-          jmiSaveActionPerformed(null);
-          return true;
-
-        case JOptionPane.NO_OPTION:
-          return true;
-
-        default:
-          throw new AssertionError();
-      }
+//      int dialogAnswer = JOptionPane.showConfirmDialog(this,
+//              "You have an unsaved game. Save it?",
+//              "Killer Sudoku",
+//              JOptionPane.YES_NO_CANCEL_OPTION);
+//
+//      switch (dialogAnswer) {
+//        case JOptionPane.CANCEL_OPTION:
+//          return false;
+//
+//        case JOptionPane.YES_OPTION:
+//          jmiSaveActionPerformed(null);
+//          return true;
+//
+//        case JOptionPane.NO_OPTION:
+//          return true;
+//
+//        default:
+//          throw new AssertionError();
+//      }
     } else {
       return true;
 
     }
+    return true;
   }
 
   private void jmiExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExitActionPerformed
@@ -554,27 +539,27 @@ public class TestKiller extends javax.swing.JFrame
   }//GEN-LAST:event_jmiExitActionPerformed
 
   private void jmiRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRestoreActionPerformed
-    File f;
-
-    if (testDirtySave()) {
-      JFileChooser jfc = new JFileChooser();
-      jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-      jfc.setMultiSelectionEnabled(false);
-      jfc.addChoosableFileFilter(kDSff);
-      jfc.addChoosableFileFilter(jfc.getAcceptAllFileFilter());
-      jfc.setFileFilter(kDSff);
-      jfc.setCurrentDirectory(lastDirectory);
-      int restoreResult = jfc.showOpenDialog(this);
-      if (restoreResult == JFileChooser.APPROVE_OPTION) {
-        f = jfc.getSelectedFile();
-        if (f != null) {
-          if (restoreGameFromFile(f)) {
-            lastDirectory = jfc.getCurrentDirectory();
-            gameSaveFile = f;
-          }
-        }
-      }
-    }
+//    File f;
+//
+//    if (testDirtySave()) {
+//      JFileChooser jfc = new JFileChooser();
+//      jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//      jfc.setMultiSelectionEnabled(false);
+//      jfc.addChoosableFileFilter(kDSff);
+//      jfc.addChoosableFileFilter(jfc.getAcceptAllFileFilter());
+//      jfc.setFileFilter(kDSff);
+//      jfc.setCurrentDirectory(lastDirectory);
+//      int restoreResult = jfc.showOpenDialog(this);
+//      if (restoreResult == JFileChooser.APPROVE_OPTION) {
+//        f = jfc.getSelectedFile();
+//        if (f != null) {
+//          if (restoreGameFromFile(f)) {
+//            lastDirectory = jfc.getCurrentDirectory();
+//            gameSaveFile = f;
+//          }
+//        }
+//      }
+//    }
   }//GEN-LAST:event_jmiRestoreActionPerformed
 
 private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -582,15 +567,15 @@ private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_formWindowClosing
 
 private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
-  jmiSaveAsActionPerformed(null);
+//  jmiSaveAsActionPerformed(null);
 }//GEN-LAST:event_btnSaveAsActionPerformed
 
 private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-   jmiRestoreActionPerformed(null);
+//   jmiRestoreActionPerformed(null);
 }//GEN-LAST:event_btnOpenActionPerformed
 
 private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-  jmiSaveActionPerformed(null);
+//  jmiSaveActionPerformed(null);
 }//GEN-LAST:event_btnSaveActionPerformed
 
 private void btnPartitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartitionsActionPerformed
@@ -615,61 +600,61 @@ private void jmiViewPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FI
 }//GEN-LAST:event_jmiViewPartItemStateChanged
 
   private boolean restoreGameFromFile(File f) {
-    ObjectInputStream ois;
-    try {
-      ois = new ObjectInputStream(new FileInputStream(f));
-      if (ois != null) {
-        System.out.println("Restoring game " + f.getName());
-        if (!op.getGp().restoreGame(ois)) {
-//            op.getGp().cleanup(); // doesn't work yet
-          System.out.println("Restore failure");
-          System.exit(1);
-        }
-        try {
-          ois.close();
-        } catch (IOException ex) {
-        }
-        gameSaveFile = f;
-        setFileName();
-        validate();
-//          System.out.println("Validated");
-        setVisible(true);
-//          print();
-        System.out.println("Restored");
-      }
-    } catch (FileNotFoundException ex) {
-      showMessage("Cannot find file " + f.getName());
-      return false;
-    } catch (IOException ex) {
-      showMessage("Cannot open file " + f.getName());
-      return false;
-    }
+//    ObjectInputStream ois;
+//    try {
+//      ois = new ObjectInputStream(new FileInputStream(f));
+//      if (ois != null) {
+//        System.out.println("Restoring game " + f.getName());
+//        if (!op.getGp().restoreGame(ois)) {
+////            op.getGp().cleanup(); // doesn't work yet
+//          System.out.println("Restore failure");
+//          System.exit(1);
+//        }
+//        try {
+//          ois.close();
+//        } catch (IOException ex) {
+//        }
+//        gameSaveFile = f;
+//        setFileName();
+//        validate();
+////          System.out.println("Validated");
+//        setVisible(true);
+////          print();
+//        System.out.println("Restored");
+//      }
+//    } catch (FileNotFoundException ex) {
+//      showMessage("Cannot find file " + f.getName());
+//      return false;
+//    } catch (IOException ex) {
+//      showMessage("Cannot open file " + f.getName());
+//      return false;
+//    }
     return true;
   }
 
-  private class KDSFileFilter extends javax.swing.filechooser.FileFilter {
-
-    @Override
-    public boolean accept(File f) {
-      if (f.isDirectory()) {
-        return true;
-      }
-
-      String ext = null;
-      String s = f.getName();
-      int i = s.lastIndexOf('.');
-
-      if (i > 0 && i < s.length() - 1) {
-        ext = s.substring(i + 1).toLowerCase();
-      }
-      return (ext == null || ext.equalsIgnoreCase(fileExtension));
-    }
-
-    @Override
-    public String getDescription() {
-      return "Killer Su Doku games";
-    }
-  }
+//  private class KDSFileFilter extends javax.swing.filechooser.FileFilter {
+//
+//    @Override
+//    public boolean accept(File f) {
+//      if (f.isDirectory()) {
+//        return true;
+//      }
+//
+//      String ext = null;
+//      String s = f.getName();
+//      int i = s.lastIndexOf('.');
+//
+//      if (i > 0 && i < s.length() - 1) {
+//        ext = s.substring(i + 1).toLowerCase();
+//      }
+//      return (ext == null || ext.equalsIgnoreCase(fileExtension));
+//    }
+//
+//    @Override
+//    public String getDescription() {
+//      return "Killer Su Doku games";
+//    }
+//  }
 
   /**
    * Allows user to save game Enables icons, menu items etc.
