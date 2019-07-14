@@ -127,9 +127,9 @@ public class OuterPane extends javax.swing.JPanel {
 //    btnCol.setText(upDownArrow);
 //    btnRow.setText(leftRightArrow);
 //    btnSq.setText(smallSquare);
-    gp = new GamePanel();
-    gp.addListeners();
-    add(gp, BorderLayout.CENTER);
+//    gp = new GamePanel();
+//    gp.addListeners();
+//    add(gp, BorderLayout.CENTER);
     timing = false;
     setVisible(true);
 

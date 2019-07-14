@@ -5,8 +5,8 @@
  */
 package com.ptoye.TestKiller;
 
-import com.ptoye.partitions5.PartitionEventListener;
-import com.ptoye.partitions5.Partitions;
+//import com.ptoye.partitions5.PartitionEventListener;
+//import com.ptoye.partitions5.Partitions;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
@@ -39,8 +39,10 @@ import javax.swing.UIManager;
 //TODO put actions into menu
 //TODO change perm<>temp in custom colours (?? needs a lot of remembering)
 //TODO help file??
-public class TestKiller extends javax.swing.JFrame implements PartitionEventListener,
-        Printable {
+public class TestKiller extends javax.swing.JFrame
+//        implements PartitionEventListener,
+//        Printable
+{
 
   /**
    * Version for serialisation
@@ -52,7 +54,7 @@ public class TestKiller extends javax.swing.JFrame implements PartitionEventList
   private File gameSaveFile = null;
   private File lastDirectory = null;
   private final String fileExtension = "ksd";
-  private Partitions partitionWindow = null;
+//  private Partitions partitionWindow = null;
   private boolean pwIconified = false; //remembers if partitions window iconified when main window iconified
 //  private TestKiller tk = null;
 //  private boolean pwShown = false;
@@ -89,10 +91,10 @@ public class TestKiller extends javax.swing.JFrame implements PartitionEventList
     pack();
     validate();
 //    tk = this;
-    partitionWindow = new Partitions(this);
-    partitionWindow.setExtendedState(ICONIFIED);
-    partitionWindow.setVisible(true);
-    partitionWindow.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//    partitionWindow = new Partitions(this);
+//    partitionWindow.setExtendedState(ICONIFIED);
+//    partitionWindow.setVisible(true);
+//    partitionWindow.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 //    int px=(int)Math.round(getLocation().getX()+getWidth());
 //    partitionWindow.setLocation(px,
 //        (int) Math.round(getLocation().getY()));
@@ -130,17 +132,17 @@ public class TestKiller extends javax.swing.JFrame implements PartitionEventList
   }
 
   private void iconifyPartitionsWindow() {
-    partitionWindow.setExtendedState(ICONIFIED);
-    btnPartitions.setIcon(showPartsIcon);
-    jmiViewPart.setSelected(false);
-    pwIconified = true;
+//    partitionWindow.setExtendedState(ICONIFIED);
+//    btnPartitions.setIcon(showPartsIcon);
+//    jmiViewPart.setSelected(false);
+//    pwIconified = true;
   }
 
   private void showPartitionsWindow() {
-    partitionWindow.setExtendedState(NORMAL);
-    btnPartitions.setIcon(hidePartsIcon);
-    jmiViewPart.setSelected(true);
-    pwIconified = false;
+//    partitionWindow.setExtendedState(NORMAL);
+//    btnPartitions.setIcon(hidePartsIcon);
+//    jmiViewPart.setSelected(true);
+//    pwIconified = false;
   }
 
   /**
@@ -363,13 +365,13 @@ public class TestKiller extends javax.swing.JFrame implements PartitionEventList
   }//GEN-LAST:event_jmiRestartActionPerformed
 
   private void formWindowIconified(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowIconified
-    pwIconified = (partitionWindow.getExtendedState() == ICONIFIED);
-    partitionWindow.setExtendedState(ICONIFIED);
+//    pwIconified = (partitionWindow.getExtendedState() == ICONIFIED);
+//    partitionWindow.setExtendedState(ICONIFIED);
   }//GEN-LAST:event_formWindowIconified
 
   private void formWindowDeiconified(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeiconified
     if (!pwIconified) {
-      partitionWindow.setExtendedState(NORMAL);
+//      partitionWindow.setExtendedState(NORMAL);
     }
   }//GEN-LAST:event_formWindowDeiconified
 
@@ -414,7 +416,7 @@ public class TestKiller extends javax.swing.JFrame implements PartitionEventList
     PrinterJob pj = PrinterJob.getPrinterJob();
     boolean printit;
 
-    pj.setPrintable(this);
+//    pj.setPrintable(this);
     printit = pj.printDialog();
     System.out.println("Resolution=");
     if (printit) {
@@ -427,17 +429,17 @@ public class TestKiller extends javax.swing.JFrame implements PartitionEventList
     printAll(getGraphics());
   }//GEN-LAST:event_jmiPrintActionPerformed
 
-  @Override
-  public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
-    if (pageIndex > 0) {
-      return NO_SUCH_PAGE;
-    }
-    Graphics2D g2d = (Graphics2D) graphics;
-    g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-    this.printAll(graphics);
-    return PAGE_EXISTS;
-
-  }
+//  @Override
+//  public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+//    if (pageIndex > 0) {
+//      return NO_SUCH_PAGE;
+//    }
+//    Graphics2D g2d = (Graphics2D) graphics;
+//    g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+//    this.printAll(graphics);
+//    return PAGE_EXISTS;
+//
+//  }
 
 //  private void print() {
 //    System.out.println("Frame " + this);
@@ -592,24 +594,24 @@ private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_btnSaveActionPerformed
 
 private void btnPartitionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartitionsActionPerformed
-  if (partitionWindow != null) {
-    if (partitionWindow.getExtendedState() != NORMAL) {
-      showPartitionsWindow();
-    } else {
-      iconifyPartitionsWindow();
-    }
-  }
+//  if (partitionWindow != null) {
+//    if (partitionWindow.getExtendedState() != NORMAL) {
+//      showPartitionsWindow();
+//    } else {
+//      iconifyPartitionsWindow();
+//    }
+//  }
 }//GEN-LAST:event_btnPartitionsActionPerformed
 
 private void jmiViewPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jmiViewPartItemStateChanged
-  if (partitionWindow != null) {
-
-    if (evt.getStateChange() == ItemEvent.SELECTED) {
-      showPartitionsWindow();
-    } else {
-      iconifyPartitionsWindow();
-    }
-  }
+//  if (partitionWindow != null) {
+//
+//    if (evt.getStateChange() == ItemEvent.SELECTED) {
+//      showPartitionsWindow();
+//    } else {
+//      iconifyPartitionsWindow();
+//    }
+//  }
 }//GEN-LAST:event_jmiViewPartItemStateChanged
 
   private boolean restoreGameFromFile(File f) {
@@ -743,16 +745,16 @@ private void jmiViewPartItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FI
   /**
    * Called when the partitions window is iconified
    */
-  @Override
-  public void partitionWindowIconified() {
-    iconifyPartitionsWindow();
-  }
-
-  /**
-   * Called with the partitions window becomes visible
-   */
-  @Override
-  public void partitionWindowVisible() {
-    showPartitionsWindow();
-  }
+//  @Override
+//  public void partitionWindowIconified() {
+//    iconifyPartitionsWindow();
+//  }
+//
+//  /**
+//   * Called with the partitions window becomes visible
+//   */
+//  @Override
+//  public void partitionWindowVisible() {
+//    showPartitionsWindow();
+//  }
 }
