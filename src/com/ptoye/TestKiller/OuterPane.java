@@ -152,7 +152,7 @@ public class OuterPane extends javax.swing.JPanel {
     pnlButtons.add(btnRow);
 
     btnCol.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-    btnCol.setText("↔");
+    btnCol.setText("↕");
     btnCol.setToolTipText("Confine selected squares to column");
     btnCol.setMargin(new java.awt.Insets(2, 5, 2, 5));
     pnlButtons.add(btnCol);
