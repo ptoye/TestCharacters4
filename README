@@ -1,0 +1,11 @@
+This is a very cut-down version of the project which gives character translation problems.. I might have been able to reduce it even further, but this shows the problem.
+
+The OS is Windows 7 Home SP1.
+
+To show the issue: First, look at the OuterPane design. You will see that the 3rd to 5th buttons from the left have arrows and squares (I hope). Also, in the OuterPane.form file, you should see that the btnRow, btnSq and btnCol 'text' property is set to the appropriate Unicode character.
+
+Now compile and run the project. You should see that these three buttons show question marks, and that the OuterPane.form file has question marks instead of the arrow characters.
+
+Quit the run.
+
+Go back to the OuterPane design and delete the leftmost button (undo). Compile and run again. The question marks have disappeared and the arrows/square are there! 
