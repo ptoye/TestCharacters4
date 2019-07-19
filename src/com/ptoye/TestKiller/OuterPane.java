@@ -140,19 +140,19 @@ public class OuterPane extends javax.swing.JPanel {
     pnlButtons.add(btnRedo);
 
     btnSq.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-    btnSq.setText("?");
+    btnSq.setText("□");
     btnSq.setToolTipText("Confine selected squares to square");
     btnSq.setMargin(new java.awt.Insets(2, 5, 2, 5));
     pnlButtons.add(btnSq);
 
     btnRow.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-    btnRow.setText("?");
+    btnRow.setText("↔");
     btnRow.setToolTipText("Confine selected squares to row");
     btnRow.setMargin(new java.awt.Insets(2, 5, 2, 5));
     pnlButtons.add(btnRow);
 
     btnCol.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-    btnCol.setText("?");
+    btnCol.setText("↔");
     btnCol.setToolTipText("Confine selected squares to column");
     btnCol.setMargin(new java.awt.Insets(2, 5, 2, 5));
     pnlButtons.add(btnCol);
